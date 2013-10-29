@@ -1,0 +1,4 @@
+archway = F
+open, locked, and trapped doors = DT, DB, DL, DR
+secret doors = DST, DSB, DSL, DSR
+porticullises = DPT, DPB, DPL, DPR

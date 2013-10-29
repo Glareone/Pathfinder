@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="isometric" width="30" height="30" tilewidth="64" tileheight="32">
+ <tileset firstgid="1" name="tileset_grassland.png" tilewidth="64" tileheight="32">
+  <image source="../../Tile sets/new/tileset_grassland.png" trans="ff00ff" width="1024" height="1408"/>
+  <terraintypes>
+   <terrain name="Новый участок" tile="65"/>
+  </terraintypes>
+  <tile id="33" terrain=",,,0"/>
+  <tile id="49" terrain=",0,,0"/>
+  <tile id="65" terrain="0,0,,"/>
+ </tileset>
+ <tileset firstgid="705" name="Mask.png" tilewidth="64" tileheight="32">
+  <image source="S:/Pathfinder/Tile sets/new/Mask.png" trans="ff00ff" width="1280" height="32"/>
+ </tileset>
+ <layer name="Фон" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztkcEKACAIQ+3k//9xhwo6BBqpi2ywoz7niJpK9440M+XQ0j4Ppudei8y3G3VzNm7GzENZ8n7H9YvoOCMX3fXr/43mzorkMvDPrxnR4UoI5sxm5bwllwTu6k4vbgUrAgM6
+  </data>
+ </layer>
+ <layer name="Трава" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhaYOEA2r1xAO0ezmAxFA8E2AzFIw1cBuIrA2T3YyB+MkB20wu0D6Dd0wfQ7uEMlg6g3VsH0O5RMApGwSgYBcMfAAC2JQnl
+  </data>
+ </layer>
+ <layer name="Цветы" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIxGswCO3A4pHASq4OIB2PxxAu0fB4AajeXUUjIJRMNjAYC6XLg+g3Y8H0O5RMArwAQC/IAbx
+  </data>
+ </layer>
+ <layer name="Дерево зад" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzUERABAURVFsaUADGtCA/ilEsLD5Gbwxc0+B4xwAAMBb2+vuI7xTeH9GO4vgznY2wV3tHIK727kE9xSc+NsFqlsDsg==
+  </data>
+ </layer>
+ <layer name="Объекты" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0bkVQFAURVFf13SAChCRGRIyQwOGCmhG4LTwL8E7yQ33W+sFgeWrOtSbFeb4gT18YFqWZVmW9d9i927mdGaElbIl2wtuSDAKtmNXgZ1jtOzCngK7wZjZQ/jvCWtnb6G9YV1C00cPuIoRlw==
+  </data>
+ </layer>
+ <layer name="Дерево 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzUEVABAURUFsaUADGtCA/ilEsLD5ERxvc6fAOAcAAAC8tb3uPsI7hf9ntLMI7mxnE9zVziG4u51LcM/H5wWvTgOy
+  </data>
+ </layer>
+ <layer name="Дерево перед" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzUEVABAURUFsaUADGtCA/ilEsLD5ERxvc6fAOAcAAAC8tb3uPsI7hf9ntLMI7mxnE9zVziG4u51LcM/H5wWvTgOy
+  </data>
+ </layer>
+ <layer name="Дорога" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztlmEKwyAMhb1CNzZYWaP3P+VWiCDhJUarK4M+yB9N8mlqtCFcOku3H/MebDs3dcTHry1sbzC/GLHEbBRX0553MxgW98XsZydXY0QwhoS4ZR2RbYWvZMh5pKhwPbGI69lrZqL8njplUdBrgWT5lHlSwxo8svaU10QVvxlcj99sbprA1Xomay3G7gfXIFnyfGm1IGb3qnberW9wlNs7P5Ob+we9GSuzpY3gtvp51cJNg5jl3Y16qKwtKeM9km+2p4dG3Je1O1DLP5uriQZxvf8jo9TyRl/6H30AkNQMLg==
+  </data>
+ </layer>
+ <layer name="Дерево 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+  </data>
+ </layer>
+ <layer name="Вода 3" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzcEJACAMBMFLWT7Sf1u+BCsQCTOw700AIFmVdL1/nnznfe83AH/a7ggDpQ==
+  </data>
+ </layer>
+ <layer name="Вода 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzaERACAMxdBfiWEnRmD/KZCgaAfAtoi8u+hIAIAfbO8UfJfXTOqW/7XkZxhW8w2z6AsAwMsFI2YEhw==
+  </data>
+ </layer>
+ <layer name="Вода 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztw0EJAEAIADBNZwT7N/FhCA9ug0UAwF8q94XODQAvGI/EAUE=
+  </data>
+ </layer>
+ <layer name="Вода 4" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL6AQHGgXbB4AbfkDC9ARsjBI8C2oA/QCwxQOE7kHYzAO3VGCC7R8ubUTAKRsEoIAwAobQFZw==
+  </data>
+ </layer>
+ <layer name="Вода сокр" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzTEBAAAIA6BVN4KNjTEPKEACAB1TvLd4A8AXB9wVARM=
+  </data>
+ </layer>
+ <layer name="Изгородь" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzcEJACAMBMG0L9iAYrGmBIWAD2dgv3cRAO/0i6q0bGbrsMrfUbjn1++PvwDU2ltxFS4=
+  </data>
+ </layer>
+ <layer name="Дерево 2.1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzUENwCAQBdHNOgMHxQE4oA6KA1BMD6uBz2FeMucxA3CD5Gb5r/j59xPPJnjXeL6Cd4/nELy/eC7BewqeAADgThvqNgUL
+  </data>
+ </layer>
+ <layer name="Сундуки" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzTEBAAAIA6AlNYL9T2PMAwqQANAwxXuLNwDwxwGr4gDN
+  </data>
+ </layer>
+ <layer name="Дерево 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzUENwCAQBdHNOgMHxQE4oA6KA1BMD6uBz2FeMucxA3CT5Gb5r/j59xPPJnjXeL6Cd4/nELy/eC7BewqeAADgLhvB5gUL
+  </data>
+ </layer>
+ <layer name="Здание 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0N0NQEAUROG7zVKBnwawDWAbWNSkBFU4j6uBK2K+ZJ5PMmYiIv9SBbOa9cG329BrWcdi0T4d2gO9kU0sFe3LoT3TW9jKDufPM72N7c7d6Jt7SC+2RUTke25q6gys
+  </data>
+ </layer>
+ <layer name="Лес зад" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+  </data>
+ </layer>
+ <layer name="Лес перед" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+  </data>
+ </layer>
+ <layer name="Указатели" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzUERACAIAEH6V4MG0kBCGMLHzehtgY2Q9KoC7wbvAW/dS/Be4L3BW5L0rwPiUgUm
+  </data>
+ </layer>
+ <layer name="Изгородь 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztw7EJADAIADD/xxM8tmtx08EpgUQAAMzl91K1AOw9eZoEFQ==
+  </data>
+ </layer>
+ <layer name="Горы" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzcEAAAAIBLB0Qgghf6EwrscmsK6cCd4bvAEAAD44EPMArA==
+  </data>
+ </layer>
+ <layer name="Горы 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYGBgUELCgQz0BUZI7EQ62+2ExC6ks92jYBSMglEwCkbBKBgFo2AUjIJRMNAAAPmaAf4=
+  </data>
+ </layer>
+ <layer name="Рудник" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0aEBwCAUA9Hf/deBTgCdoDABdI4K4nHB3DORJxKx3FfYZTUfYzupVbXd2C5qNe1nbL9qzQM/jwNNAAAAAHs/vakJqQ==
+  </data>
+ </layer>
+ <layer name="Рудник сундуки" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+  </data>
+ </layer>
+ <layer name="Руднки Дерево" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzbEBABAQBMEjoQM6oP/mCCVXw79gp4GRpFsU7vjsNf5uPmfCPXzuhHslnAAAAAD+9QB05AKL
+  </data>
+ </layer>
+ <layer name="Горы 2.2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzUENAAAIBCCrXf9SdnBzPoQCVMGePHpz9AIAwFQDViEBBQ==
+  </data>
+ </layer>
+ <layer name="Горы 2.1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzQENAAAMAiAr2b+cBZ7ggwIkfFevFwAADgPPEgD2
+  </data>
+ </layer>
+ <layer name="Горы 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzbEAAAAAArBU8pcMo2cTWPJRr9cLAABXAw4FAOg=
+  </data>
+ </layer>
+ <layer name="Горы 2.3" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0rENADAIA0GWzAiMkP1TgCUGQHHz15juGyJKjtX9k5rX0HY0gQ2n1/HDaeoCAABgzwOZYgQj
+  </data>
+ </layer>
+ <layer name="Горы дерево 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0rENABAUhOHHBmzApiq1ypQKJkDyGgNwidyXXP03J3JqRiB2F9mmezKom9YqqF0etgbgv12b1r5vG216QNtpMwLaAdAkIiKi/031UQhD
+  </data>
+ </layer>
+ <layer name="Дерево сухое 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAN/jJCaD4mPIpoBHihdsoNgN2yUDv1BsBuXaiddgNgty3UTr8BsNt3AOwcBaNgFIyCUTAKRsEoGAWjYKQDAOtvAto=
+  </data>
+ </layer>
+ <layer name="Дерево сухое 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAP8DJBaDkmMg0gAvxlhNB8aHbIQvl6NLQbl/90oXw7GtqNy3+2UL4fDe3G5T9fGtoJA/TwHy5AD/8Nd4Arv9ID0KM8wgXoUR7hAvQoj3CBwZBfR0Kaw+ZHeqU5bH6kNM0RG1fY/EhumiM1rrD5kdw6gtS4oma+IjWuqFkPDobyYRSMglFAPAAANS4PCw==
+  </data>
+ </layer>
+ <layer name="Объекрты 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzQERACAIBDCKEsEURrCwMZ47tgKrmqeD9wneKTd4v+ANAADbfUxJAeE=
+  </data>
+ </layer>
+ <layer name="Объекты" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBh8IGqA7I0E4iw62zkZSmcCcRWd7YaBygGyl9Zg6kA7YBSMglEwCkbBKBgFo2AUjIJBDgA+/wOi
+  </data>
+ </layer>
+ <layer name="Сундуки 3" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKhAVoG0O4pA2j3KBgF9ASxA2h37gDaPQpGwSigPtgFxJeBeA+d7d0Dtfsxne3dxUB/vzJQwU4AQdoItw==
+  </data>
+ </layer>
+ <layer name="Лес" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAOfjJCaC4mHApoCDihdkoNgN2SUDu1yLB7PRCvJFHPRSS2JtROKyx24zN3LRDvB+KdJNr9EEqD9FlC7fRCs3slAXP3kmgnNuCJxU6Yu2gFcIUnLe1cRmM7luKR24bEJjWNEgO2EqmOVn6nhZ+IsY9Q/kBWSy2wk0h7YWqpDWiZR4YS6AfiHiRML7AbiOcD8RwkTAygdx5BBtTII7uhmBoA2T5YflqJRY4c8wgB9LDYyUA4TyO7Dd0uYvIjIffhMwPZbeTkfUrLC5j9hACt0jctyllql6GDOW+PgqEDACtZN40=
+  </data>
+ </layer>
+ <layer name="Кладбище" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRgA+sBeL1A2DvAyDeC8T76WzvUiD+AMT36GwvCGyF0u8GwO5RMApGwSgYBaNgJAIAu/UHzw==
+  </data>
+ </layer>
+ <layer name="Кладбище лес" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAO3jDikKAD+DOAdvMw0d9ObqidMgNgtzTUTp0BsFsbaqfNANhtDbXTZwDs9h4AO0fBKKAUjNYJ9AOjdQL97R6tE4YnGC236AdGyy36203NcgsAwBsKxw==
+  </data>
+ </layer>
+ <layer name="Сундуки" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF1AItA2BnK5SeMgB2Tx0AO0GgnQg1sTSyezoRanJpZPcoGAWEQPMA2j15AO0eTIAe9UAjDnF61AMT6WDHKBgFo2B4AFq1xYgB9G6LxdHZPmSQRwUzAN65CPE=
+  </data>
+ </layer>
+ <layer name="Вода 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKADAIBEH9VBr9/7tCsBHB9prswNVbnBkAAACAXx2vhetafSFov06Oqbqzrez29vbxBZ+/Bwg=
+  </data>
+ </layer>
+ <layer name="Вода" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYBaNgFAwE+IaG6QF+Qmk2RlRMS/AVSnPS2B5s9rLS2c6hZi8AcLkI3g==
+  </data>
+ </layer>
+ <layer name="Вода 3" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYBaNgFNAb/AXib2hiv+hgpygjAwMvFNPTbpB9qozY5WhtNy7wfdReBgAafAkq
+  </data>
+ </layer>
+ <layer name="Вода 4" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzUERACAMxMCrDKgCqH9/nIqWR3Ym70gAAAAA0GuFtF1G//v4eV0NvH/zAA3VANM=
+  </data>
+ </layer>
+ <layer name="Вода обхекты 3" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzbENACAMBLEsmhGYj/XSMAFC+gJbuvqqAADe2qfUG7jTwfcKvn82O38C8A==
+  </data>
+ </layer>
+ <layer name="Вода дорога" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYBaQCOSBWGIF2SwyQ3XJQuwcCjOS4Hih7B9LukQYAm8MBxw==
+  </data>
+ </layer>
+ <layer name="Вода Фон" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzSEBAAAAAiCb/x87RDhAAgAA8Knn7wAZOAAW
+  </data>
+ </layer>
+ <layer name="Вода обхекты 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzUERACEQA8H45ByAA0486yKf7qp5TwIAAJCs6Su993RK7zv9pXfbA52FAoY=
+  </data>
+ </layer>
+ <layer name="Вода Объеткы 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwXAFOwbQ3m0DZO9A+ZmagBg/LKG5K3CDLQNo9yogbqOymfjCux3J3l1API3KduMD06H0FajdAwGeDJC99ARNA2j3pAG0GwYAjrMOLQ==
+  </data>
+ </layer>
+ <layer name="Дерево лес 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMArwA0cmBgYnIA5ior9dgVA6iQ52o9uVCKWL6GA3ul2FULqJDnaj29UIpSfRwW50uybSwU4YoKddo2AUjIJRMFgBADAPChU=
+  </data>
+ </layer>
+ <layer name="Дерево лес 2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztVtsJgDAQK91MN9ANdAPdQDfQiS3YwlE8+iB3/lxA5H4SQmiIcxhM/v2vHkT4gSFwj+GbM40l3rugNudvi/cpqM35O+J9C2pz/i5BzQQNfxw0/BkMLeD6T4MH1e89PKh+7+FB9XsNT54Lqv9qePJcUP1Xw9OSC+oNJJRyoXrojVPKheqhN04pF6qnsXEoqJ72BqB62hvANofhbzxASiJs
+  </data>
+ </layer>
+ <layer name="Дерево лес 3" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztlNENgzAQQ+F+yQbtBrABbED3n6Ij9ANFCpKREuGDy1Ek3rcl2zkrTfMffNvrvH/g7Z0jSD5HTbrk+QZvzFGTV/IZJJ+jJn3ymWSbw+PmY/L7yDaHx81neF/M4XVzzOF9cwRvfhbtZvDmZ9FuBm+OsB1Qp93MXNCzHaLOejNshyB2m2E7oM5qM2wH1JU2s8Juh+2AutJmVtjt7HXQ6iLsdvY6aHR3/DN7g6xH9m/hG9Fswhp2Ow8P1izXZBoy
+  </data>
+ </layer>
+ <layer name="Камни" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0bERACAIwED2Xw8rWqycwtYJyHmXXyBFIiRGge0z3Mvh3quh7oK6G+om2KYeS5Kk/11+3AfN
+  </data>
+ </layer>
+ <layer name="Mask" width="30" height="30" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJyll+FuwyAMhCve/63KGkqiLUrzQFslLF1Od5B0P04NEPiwYxv6SrfbS2g/odJ05h3Wm7EJrX+qoNF6I+Yd9B9uz5YFdIa7Nj3aWB2wHeMT7gOE7NgTr4ecDGtn4Ydg7ie4RTAdO4PuF7i1/Spuj1kEK543Ma64VXC/m9CPSllwK7RxHLnRx9ylcWPuKuxV9uekfYF5x0zmLjR3bupxnS+YW4mnuL14XS9oT8dcQZuq4Cq/he0q/py4NihuIe5Mzy7XYu7W2j+gyB3kztBGHyIL4+ZMviluBX58u5p03vTiZk3H76LyvDQuxtXdrMc56WLX5VfsAe1lLtrPcYBcjk/mboLd4xbD7fmtABelbF6Aq2qbY7rcVbHAtcDtf2Svq3lOXPdUfcyCW5Pfn7K5iHeZrbhcx11c8/k+ioNgqzsS5iDXBOfb6D/LVfaqM1t9e9c/ivtgcx103C8hzM1suMif0vEew1x1N1Jc3vPo7JlAzHV3wStcV/ffY88mlVtKI+5muMx+Eps57r9A3O34vHb2siaSYiq24vb8POL+Avr9zOo=
+  </data>
+ </layer>
+</map>
