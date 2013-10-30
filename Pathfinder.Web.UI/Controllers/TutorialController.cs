@@ -2,10 +2,10 @@
 
 namespace Pathfinder.Web.UI.Controllers
 {
-    public class HomeController : ControllerBase
+    public class TutorialController : ControllerBase
     {
         //
-        // GET: /Home/
+        // GET: /Tutorial/
 
         public ActionResult Index()
         {
