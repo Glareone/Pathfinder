@@ -1,1 +1,106 @@
-﻿
+﻿<style>
+     .bs-sidebar .nav .nav {
+         display: block;
+     }
+</style>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+<div class="row">
+    <div class="col-md-3">
+        <div role="complementary" class="bs-sidebar hidden-print affix">
+            <ul class="nav bs-sidenav">
+                <li>
+                    <a href="#overview">Overview</a>
+                </li>
+                <li>
+                    <a href="#starter-package">Starter packages</a>
+                </li>
+                <li>
+                    <a href="#gameplay-description">Game process description</a>
+                    <ul class="nav">
+                        <li><a href="#gameplay-objective">Objective</a></li>
+                        <li><a href="#gameplay-locations">Locations</a></li>
+                        <li><a href="#gameplay-process">Game process</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="bs-docs-section">
+            <div>
+                <div class="page-header">
+                  <h2 id="overview">Overview</h2>
+                </div>
+                <p>
+                    The strategies implemented in the starter packages are only meant to serve as a starting point for making your bot.
+                    In fact, it's almost the worst strategy to use. The starter packages also come with some useful functions to help you develop a smarter strategy.
+                    This page will walk you through a series of improvements. With each step that you complete, your bot will get smarter.
+                </p>
+                <div>
+<pre class="prettyprint">
+<code>
+    var a = 5;
+    int t = a;
+</code>
+</pre>
+                </div>
+            </div>
+            <div>
+                <div class="page-header">
+                    <h2 id="starter-package">Starter packages</h2>
+                </div>
+                <p>
+                    Here are the starter packages that we currently offer. Each starter package is a ZIP file which contains a simple already-working entry to use as a starting point
+                </p>
+                <div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Language</th>
+                            <th>Additional information</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>.Net (C#)</td>
+                            <td>- // -</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            <div>
+                <div class="page-header">
+                    <h2 id="gameplay-description">Game process overview</h2>
+                </div>
+                <p>
+                    Pathfinders is a multi-player strategy game.
+                </p>
+                <div>
+                    <h4 id="gameplay-objective">Objective</h4>
+                    <p>
+                        The objective is to create a computer program (a bot) that plays the game as intelligently as possible. It is recommended that you use one of the starter packages as a starting point.
+                    </p>
+                </div>
+                <div>
+                    <h4 id="gameplay-locations">Locations</h4>
+                    <p>
+                        <img src="~/Content/images/Tutorial/Field.png" class="img-rounded"/>
+                    </p>
+                    <p>
+                        Locations are maps with entry and exit points. The map is a grid of squares. The are some objects (houses, chests) on it where you can find diffferent artifacts.
+                    </p>
+                </div>
+                <div>
+                    <h4 id="gameplay-process">Game process</h4>
+                    <p>
+                        Each player can only see the area around it, so bots will not start with a full view of the map.
+                        Each turn the bot will be given the following information for all squares that are visible to him.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

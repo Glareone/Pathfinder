@@ -15,7 +15,7 @@
     <AssemblyName>Pathfinder.Web.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -137,8 +137,11 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\docs.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\Home\Field.png" />
+    <Content Include="Content\images\Tutorial\Field.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\bootstrap.js" />
@@ -215,9 +218,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>49261</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53745/</IISUrl>
+          <IISUrl>http://localhost/Pathfinders</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
