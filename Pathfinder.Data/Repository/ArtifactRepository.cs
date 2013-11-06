@@ -21,7 +21,7 @@ namespace Pathfinder.Data.Repository
                             SpeedBonus = .20,
                             Cost = 100,
                             IconPath = "Artifacts.artifact_1.png",
-                            Weight = 2
+                            Weight = 2.08
                         },
                     new ArtifactEntity
                         {
@@ -30,7 +30,7 @@ namespace Pathfinder.Data.Repository
                             SpeedBonus = -.10,
                             Cost = 50,
                             IconPath = "Artifacts.artifact_2.png",
-                            Weight = 6
+                            Weight = 6.90
                         },
                     new ArtifactEntity
                         {
@@ -39,7 +39,7 @@ namespace Pathfinder.Data.Repository
                             VisionBonus = .80,
                             Cost = 150,
                             IconPath = "Artifacts.artifact_3.png",
-                            Weight = 2
+                            Weight = .86
                         },
                     new ArtifactEntity
                         {
@@ -72,7 +72,7 @@ namespace Pathfinder.Data.Repository
                             SpeedBonus = .20,
                             Cost = 100,
                             IconPath = "Artifacts.artifact_7.png",
-                            Weight = .5
+                            Weight = .55
                         },
                     new ArtifactEntity
                         {
@@ -109,7 +109,7 @@ namespace Pathfinder.Data.Repository
                             SpeedBonus = .10,
                             Cost = 120,
                             IconPath = "Artifacts.artifact_11.png",
-                            Weight = 3
+                            Weight = 3.11
                         },
                     new ArtifactEntity
                         {
@@ -118,7 +118,7 @@ namespace Pathfinder.Data.Repository
                             SpeedBonus = .20,
                             Cost = 200,
                             IconPath = "Artifacts.artifact_12.png",
-                            Weight = 4
+                            Weight = 4.66
                         },
                     new ArtifactEntity
                         {
@@ -127,7 +127,7 @@ namespace Pathfinder.Data.Repository
                             SpeedBonus = .15,
                             Cost = 180,
                             IconPath = "Artifacts.artifact_13.png",
-                            Weight = 4
+                            Weight = 4.59
                         },
                     new ArtifactEntity
                         {
@@ -136,7 +136,7 @@ namespace Pathfinder.Data.Repository
                             SpeedBonus = .10,
                             Cost = 120,
                             IconPath = "Artifacts.artifact_14.png",
-                            Weight = 2
+                            Weight = 2.08
                         },
 
                 };

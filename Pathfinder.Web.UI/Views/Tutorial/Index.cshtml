@@ -43,7 +43,12 @@
                 <li>
                     <a href="#starter-package-overview">Starter package overview</a>
                     <ul class="nav">
-                        <li><a href="#starter-package-overview-location">Location</a></li>
+                        <li><a href="#starter-package-overview-class-location">class Location</a></li>
+                        <li><a href="#starter-package-overview-class-player">class Player</a></li>
+                        <li><a href="#starter-package-overview-class-chest">class Chest</a></li>
+                        <li><a href="#starter-package-overview-interface-igamestate">interface IGameState</a></li>
+                        <li><a href="#starter-package-overview-interface-ibot">interface IBot</a></li>
+                        <li><a href="#starter-package-overview-class-mybot">class MyBot</a></li>
                     </ul>
                 </li>
             </ul>
@@ -326,14 +331,14 @@
                     <h2 id="starter-package-overview">Starter package overview</h2>
                 </div>
                 <div>
-                    <h4 id="starter-package-overview-location">Location</h4>
+                    <h4 id="starter-package-overview-class-location">class Location</h4>
                     <p>
                         Specified position in maps coordinates.
                     </p>
                     <table class="table">
                         <thead>
-                            <th></th>
-                            <th>Name</th>
+                            <th style="width: 20px;"></th>
+                            <th style="width: 250px;">Name</th>
                             <th>Description</th>
                         </thead>
                         <tr>
@@ -346,6 +351,113 @@
                             <td>Col</td>
                             <td>Column index</td>
                         </tr>
+                    </table>
+                </div>
+                <div>
+                    <h4 id="starter-package-overview-class-player">class Player : <a href="#starter-package-overview-class-location">Location</a></h4>
+                    <p>
+                        Represents player and his position.
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <th style="width: 20px;"></th>
+                            <th style="width: 250px;">Name</th>
+                            <th>Description</th>
+                        </thead>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Id</td>
+                            <td>Unique player's identifier</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Team</td>
+                            <td>Represents team identificator. <i>In current version there is no command mode yet.</i></td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>ViewRadiusBonus</td>
+                            <td>Additional view radius which adds to default view radius (%). <i>Artifacts usually add this.</i></td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>SpeedBonus</td>
+                            <td>Additional speed bonus (%). <i>Artifacts usually add this.</i></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h4 id="starter-package-overview-class-chest">class Chest : <a href="#starter-package-overview-class-location">Location</a></h4>
+                    <p>
+                        Chest usually has artifact in it.
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <th style="width: 20px;"></th>
+                            <th style="width: 250px;">Name</th>
+                            <th>Description</th>
+                        </thead>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Id</td>
+                            <td>Unique chest's identifier (in map context)</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h4 id="starter-package-overview-interface-igamestate">interface IGameState</h4>
+                    <p>
+                        
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <th style="width: 20px;"></th>
+                            <th style="width: 250px;">Name</th>
+                            <th>Description</th>
+                        </thead>
+                        
+                    </table>
+                </div>
+                <div>
+                    <h4 id="starter-package-overview-interface-ibot">interface IBot</h4>
+                    <p>
+                        
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <th style="width: 20px;"></th>
+                            <th style="width: 250px;">Name</th>
+                            <th>Description</th>
+                        </thead>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>Load</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>DoTurn</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>Unload</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h4 id="starter-package-overview-class-mybot">class MyBot : <a href="#starter-package-overview-interface-ibot">IBot</a></h4>
+                    <p>
+                        
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <th style="width: 20px;"></th>
+                            <th style="width: 250px;">Name</th>
+                            <th>Description</th>
+                        </thead>
+                        
                     </table>
                 </div>
             </div>
