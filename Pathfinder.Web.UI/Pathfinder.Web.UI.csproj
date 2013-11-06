@@ -117,12 +117,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
+    <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\FileStorageController.cs" />
     <Compile Include="Controllers\TutorialController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\StarterPackageModel.cs" />
+    <Compile Include="Models\StarterPackageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\Alerts.cs" />
     <Compile Include="Support\Constants.cs" />
@@ -142,11 +146,17 @@
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\Home\Field.png" />
     <Content Include="Content\images\Tutorial\Field.png" />
+    <Content Include="Content\images\Tutorial\method_icon.gif" />
+    <Content Include="Content\images\Tutorial\move-cost.png" />
+    <Content Include="Content\images\Tutorial\move-exit.png" />
+    <Content Include="Content\images\Tutorial\objects-chests.png" />
+    <Content Include="Content\images\Tutorial\property_icon.gif" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\html5shiv.js" />
+    <Content Include="App_Data\StarterPackages\Pathfinder.Bot.zip" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
@@ -174,9 +184,7 @@
     <Content Include="Views\Tutorial\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Maps\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -202,6 +210,24 @@
   <ItemGroup>
     <Content Include="Views\Shared\_html5shiv.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
+      <Project>{3804c157-7f4c-42af-a2a4-5c3b4503c920}</Project>
+      <Name>Pathfinder.Bot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Core\Pathfinder.Core.csproj">
+      <Project>{53430992-6c99-44a6-9585-53cabcb87965}</Project>
+      <Name>Pathfinder.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Data\Pathfinder.Data.csproj">
+      <Project>{668332c1-dc4e-4a12-a218-b6341a172f4a}</Project>
+      <Name>Pathfinder.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Domain\Pathfinder.Domain.csproj">
+      <Project>{cc12d821-6169-4cea-a546-4efb12f6dd95}</Project>
+      <Name>Pathfinder.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -220,7 +246,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49261</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Pathfinders</IISUrl>
+          <IISUrl>http://localhost/Pathfinder</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

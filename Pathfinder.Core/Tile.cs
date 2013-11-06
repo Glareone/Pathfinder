@@ -1,9 +1,16 @@
 ﻿using System;
+using Pathfinder.Bot;
 
-namespace Pathfinder.Domain
+namespace Pathfinder.Core
 {
     public class Tile : Location, IEquatable<Tile>
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="Tile"/> class
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <param name="cost"></param>
         public Tile(int row, int col, int? cost)
             : base(row, col)
         {

@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,18 +40,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Artifact.cs" />
-    <Compile Include="GameState.cs" />
-    <Compile Include="Location.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Entities\ArtifactEntity.cs" />
+    <Compile Include="DomainContext.cs" />
+    <Compile Include="Entities\DomainEntity.cs" />
+    <Compile Include="Entities\EntityBase.cs" />
+    <Compile Include="IRepositoryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tile.cs" />
+    <Compile Include="Repository\IArtifactRepository.cs" />
+    <Compile Include="Repository\IContentRepository.cs" />
+    <Compile Include="Repository\IRepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
       <Project>{3804c157-7f4c-42af-a2a4-5c3b4503c920}</Project>
       <Name>Pathfinder.Bot</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\Artifacts\artifact_1.png" />
+    <Content Include="Icons\Artifacts\artifact_10.png" />
+    <Content Include="Icons\Artifacts\artifact_11.png" />
+    <Content Include="Icons\Artifacts\artifact_12.png" />
+    <Content Include="Icons\Artifacts\artifact_13.png" />
+    <Content Include="Icons\Artifacts\artifact_14.png" />
+    <Content Include="Icons\Artifacts\artifact_2.png" />
+    <Content Include="Icons\Artifacts\artifact_3.png" />
+    <Content Include="Icons\Artifacts\artifact_4.png" />
+    <Content Include="Icons\Artifacts\artifact_5.png" />
+    <Content Include="Icons\Artifacts\artifact_6.png" />
+    <Content Include="Icons\Artifacts\artifact_7.png" />
+    <Content Include="Icons\Artifacts\artifact_8.png" />
+    <Content Include="Icons\Artifacts\artifact_9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

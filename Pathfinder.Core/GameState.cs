@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Pathfinder.Bot;
 
-namespace Pathfinder.Domain
+namespace Pathfinder.Core
 {
     public class GameState : IGameState
     {
-        public static IDictionary<Direction, ILocation> aim = new Dictionary<Direction, ILocation> {
+        public static IDictionary<Direction, Location> aim = new Dictionary<Direction, Location> {
             { Direction.None, new Location(0, 0)},
             { Direction.North, new Location(-1, 0)},
             { Direction.East, new Location(0, 1)},
@@ -17,17 +17,19 @@ namespace Pathfinder.Domain
         /// <summary>
         /// Initializes a new instance of <see cref="GameState"/> class
         /// </summary>
-        public GameState(Tile[,] map, ILocation startPoint, ILocation endPoint, int turnTime, int defaultViewRadius)
+        public GameState(Tile[,] map, Location startPoint, Location endPoint, int loadTime, int turnTime, int viewRadius, int turns)
         {
             Map = map;
             StartPoint = startPoint;
             EndPoint = endPoint;
+            LoadTime = loadTime;
             TurnTime = turnTime;
-            DefaultViewRadius = defaultViewRadius;
+            ViewRadius = viewRadius;
+            Turns = turns;
 
-            Visible = new List<ILocation>();
-            Enemies = new List<ILocation>();
-            Artifacts = new List<ILocation>();
+            Visible = new List<Location>();
+            Enemies = new List<Location>();
+            Artifacts = new List<Location>();
         }
 
         protected Tile[,] Map { get; set; }
@@ -54,6 +56,18 @@ namespace Pathfinder.Domain
         }
 
         /// <summary>
+        /// Gets the allowed loading time remaining in milliseconds
+        /// </summary>
+        public int LoadingTimeRemaining
+        {
+            get
+            {
+                TimeSpan timeSpent = DateTime.Now - LoadStart;
+                return LoadTime - (int)timeSpent.TotalMilliseconds;
+            }
+        }
+
+        /// <summary>
         /// Gets the allowed turn time remaining in milliseconds.
         /// </summary>
         public int TimeRemaining
@@ -66,9 +80,29 @@ namespace Pathfinder.Domain
         }
 
         /// <summary>
+        /// Current turn
+        /// </summary>
+        public int Turn { get; private set; }
+
+        /// <summary>
+        /// Maximum available turns count
+        /// </summary>
+        public int Turns { get; set; }
+
+        /// <summary>
+        /// Gets turn when loading started
+        /// </summary>
+        public DateTime LoadStart { get; private set; }
+
+        /// <summary>
         /// Gets turn start time
         /// </summary>
         protected DateTime TurnStart { get; private set; }
+
+        /// <summary>
+        /// Gets load time
+        /// </summary>
+        protected int LoadTime { get; private set; }
 
         /// <summary>
         /// Gets turn time
@@ -78,22 +112,22 @@ namespace Pathfinder.Domain
         /// <summary>
         /// View radius
         /// </summary>
-        public int DefaultViewRadius { get; private set; }
+        public int ViewRadius { get; private set; }
 
         /// <summary>
         /// Start point (entry)
         /// </summary>
-        public ILocation StartPoint { get; private set; }
+        public Location StartPoint { get; private set; }
 
         /// <summary>
         /// End point (exit)
         /// </summary>
-        public ILocation EndPoint { get; private set; }
+        public Location EndPoint { get; private set; }
 
         /// <summary>
         /// Gets your current location.
         /// </summary>
-        public IPlayer Me
+        public Player Me
         {
             get;set;
         }
@@ -101,7 +135,7 @@ namespace Pathfinder.Domain
         /// <summary>
         /// Gets a list of visible tiles.
         /// </summary>
-        public IList<ILocation> Visible
+        public IList<Location> Visible
         {
             get;
             private set;
@@ -110,7 +144,7 @@ namespace Pathfinder.Domain
         /// <summary>
         /// Gets a list of currently visible players.
         /// </summary>
-        public IList<ILocation> Enemies
+        public IList<Location> Enemies
         {
             get;
             private set;
@@ -119,7 +153,7 @@ namespace Pathfinder.Domain
         /// <summary>
         /// Gets a list of artifact tiles visible this turn.
         /// </summary>
-        public IList<ILocation> Artifacts
+        public IList<Location> Artifacts
         {
             get;
             private set;
@@ -130,7 +164,7 @@ namespace Pathfinder.Domain
         /// </summary>
         protected void CalculateVisibleTimes()
         {
-            var viewRadius = DefaultViewRadius + Me.ViewRadiusBonus;
+            var viewRadius = ViewRadius + Me.ViewRadiusBonus;
 
             int squares = (int)Math.Floor(Math.Sqrt(viewRadius));
             for (int r = -1 * squares; r <= squares; ++r)
@@ -151,7 +185,7 @@ namespace Pathfinder.Domain
         /// </summary>
         /// <param name="location">The location to check.</param>
         /// <returns><c>true</c> if the location is not water, <c>false</c> otherwise.</returns>
-        public bool IsPassable(ILocation location)
+        public bool IsPassable(Location location)
         {
             return Map[location.Row, location.Col].Cost.HasValue;
         }
@@ -161,7 +195,7 @@ namespace Pathfinder.Domain
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public int GetPassCost(ILocation location)
+        public int GetPassCost(Location location)
         {
             return Map[location.Row, location.Col].Cost.GetValueOrDefault(int.MaxValue);
         }
@@ -171,12 +205,12 @@ namespace Pathfinder.Domain
         /// </summary>
         /// <param name="loc"></param>
         /// <returns></returns>
-        public bool IsArtifact(ILocation loc)
+        public bool IsChest(Location loc)
         {
             return Artifacts.Contains(loc);
         }
 
-        public bool IsExit(ILocation location)
+        public bool IsExit(Location location)
         {
             return StartPoint.Equals(location);
         }
@@ -187,7 +221,7 @@ namespace Pathfinder.Domain
         /// <param name="loc"></param>
         /// <param name="direction"></param>
         /// <returns></returns>
-        public ILocation GetDestination(ILocation loc, Direction direction)
+        public Location GetDestination(Location loc, Direction direction)
         {
             var delta = Aim[direction];
 
@@ -200,7 +234,7 @@ namespace Pathfinder.Domain
         /// <param name="loc1">The first location to measure with.</param>
         /// <param name="loc2">The second location to measure with.</param>
         /// <returns>The distance between <paramref name="loc1"/> and <paramref name="loc2"/></returns>
-        public int GetDistance(ILocation loc1, ILocation loc2)
+        public int GetDistance(Location loc1, Location loc2)
         {
             int d_row = Math.Abs(loc1.Row - loc2.Row);
             d_row = Math.Min(d_row, Height - d_row);
@@ -214,7 +248,7 @@ namespace Pathfinder.Domain
         /// <summary>
         /// Gets aims
         /// </summary>
-        public IDictionary<Direction, ILocation> Aim
+        public IDictionary<Direction, Location> Aim
         {
             get { return aim; }
         }
@@ -224,7 +258,7 @@ namespace Pathfinder.Domain
         /// </summary>
         /// <param name="loc"></param>
         /// <returns></returns>
-        public bool IsVisible(ILocation loc)
+        public bool IsVisible(Location loc)
         {
             return Visible.Contains(loc);
         }
@@ -234,7 +268,7 @@ namespace Pathfinder.Domain
         /// </summary>
         /// <param name="loc"></param>
         /// <returns></returns>
-        public bool IsEnemy(ILocation loc)
+        public bool IsEnemy(Location loc)
         {
             return Enemies.Contains(loc);
         }
@@ -255,7 +289,7 @@ namespace Pathfinder.Domain
         /// Sets player's location
         /// </summary>
         /// <param name="player"></param>
-        public GameState SetPlayerLocation(IPlayer player)
+        public GameState SetPlayerLocation(Player player)
         {
             Me = player;
 
@@ -267,7 +301,7 @@ namespace Pathfinder.Domain
         /// </summary>
         /// <param name="enemy"></param>
         /// <returns></returns>
-        public GameState AddEnemy(IPlayer enemy)
+        public GameState AddEnemy(Player enemy)
         {
             Enemies.Add(enemy);
 
@@ -279,9 +313,16 @@ namespace Pathfinder.Domain
         /// </summary>
         /// <param name="artifact"></param>
         /// <returns></returns>
-        public GameState AddArtifact(IArtifact artifact)
+        public GameState AddArtifact(Chest artifact)
         {
             Artifacts.Add(artifact);
+
+            return this;
+        }
+
+        public GameState Load()
+        {
+            LoadStart = DateTime.Now;
 
             return this;
         }
@@ -292,6 +333,8 @@ namespace Pathfinder.Domain
         public GameState StartTurn()
         {
             CalculateVisibleTimes();
+
+            Turn++;
 
             TurnStart = DateTime.Now;
 

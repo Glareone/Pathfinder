@@ -1,6 +1,8 @@
 ﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Pathfinder.Data;
+using Pathfinder.Domain;
 
 namespace Pathfinder.Web.UI
 {
@@ -16,6 +18,8 @@ namespace Pathfinder.Web.UI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+
+            DomainContext.Instance.RepositoryFactory = new RepositoryFactory();
         }
     }
 }

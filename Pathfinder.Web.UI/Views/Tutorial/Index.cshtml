@@ -1,4 +1,6 @@
-﻿<style>
+﻿@using Pathfinder.Domain
+@using Pathfinder.Web.UI.Models
+<style>
      .bs-sidebar .nav .nav {
          display: block;
      }
@@ -22,6 +24,28 @@
                         <li><a href="#gameplay-process">Game process</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#game-settings">Game settings</a>
+                </li>
+                <li>
+                    <a href="#game-specification">Game specification</a>
+                    <ul class="nav">
+                        <li><a href="#game-specification-setup">Setup</a></li>
+                        <li><a href="#game-specification-turns">Turns</a></li>
+                        <li><a href="#game-specification-phases">Phases</a></li>
+                        <li><a href="#game-specification-endbotconditions">Endbot Conditions</a></li>
+                        <li><a href="#game-specification-scoring">Scoring</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#artifacts">Artifacts</a>
+                </li>
+                <li>
+                    <a href="#starter-package-overview">Starter package overview</a>
+                    <ul class="nav">
+                        <li><a href="#starter-package-overview-location">Location</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -32,18 +56,11 @@
                   <h2 id="overview">Overview</h2>
                 </div>
                 <p>
-                    The strategies implemented in the starter packages are only meant to serve as a starting point for making your bot.
-                    In fact, it's almost the worst strategy to use. The starter packages also come with some useful functions to help you develop a smarter strategy.
-                    This page will walk you through a series of improvements. With each step that you complete, your bot will get smarter.
+                    The strategies implemented in the starter packages are only meant to serve as a starting point for making your bot.<br/>
+                    In fact, it's almost the worst strategy to use. The starter packages also come with some useful functions to help you develop a smarter strategy.<br/>
+                    This page will walk you through a series of improvements. With each step that you complete, your bot will get smarter.<br/>
+                    The idea and basic rules are taken from <a href="http://aichallenge.org">AI Challenge - Ants</a> sponsored by Google.
                 </p>
-                <div>
-<pre class="prettyprint">
-<code>
-    var a = 5;
-    int t = a;
-</code>
-</pre>
-                </div>
             </div>
             <div>
                 <div class="page-header">
@@ -64,8 +81,8 @@
                         <tbody>
                           <tr>
                             <td>1</td>
-                            <td>.Net (C#)</td>
-                            <td>- // -</td>
+                            <td><a href="@Url.Action("StarterPackage", "FileStorage", new { Type = StarterPackageType.DotNET })">.Net (C#)</a></td>
+                            <td>Original package</td>
                           </tr>
                         </tbody>
                       </table>
@@ -96,9 +113,240 @@
                 <div>
                     <h4 id="gameplay-process">Game process</h4>
                     <p>
-                        Each player can only see the area around it, so bots will not start with a full view of the map.
+                        Each player can only see the area around it, so bots will not start with a full view of the map.<br/>
                         Each turn the bot will be given the following information for all squares that are visible to him.
                     </p>
+                </div>
+            </div>
+            <div>
+                <div class="page-header">
+                    <h2 id="game-settings">Game settings</h2>
+                </div>
+                <p>
+                    These are the settings given to the engine specifying the various options for how the game will be played.<br/>
+                    Note the list here containts default values. Some of them may be overidden dynamically before being given to the engine depending of player's state and stuff.
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LoadingTime</td>
+                            <td>1000ms</td>
+                        </tr>
+                        <tr>
+                            <td>Turns</td>
+                            <td>2000 qty</td>
+                        </tr>
+                        <tr>
+                            <td>TurnTime</td>
+                            <td>500 ms</td>
+                        </tr>
+                        <tr>
+                            <td>ViewRadius</td>
+                            <td>4 tiles</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <div class="page-header">
+                    <h2 id="game-specification">Game specification</h2>
+                </div>
+                <div>
+                    <h4 id="game-specification-setup">Setup</h4>
+                    <p>
+                        Each bot is sent some starting information for the game, including map size, max turns and turn timings. After all bots are ready, the game will start.
+                    </p>
+                </div>
+                <div>
+                    <h4 id="game-specification-turns">Turns</h4>
+                    <p>
+                        Once each of the bots has indicated it has finished setting up, the game engine performs the following steps repeatedly:<br/>
+                    </p>
+                    <ul>
+                        <li>Send the game state to the players</li>
+                        <li>Receive orders from the players</li>
+                        <li>Perform the phases and update the game state</li>
+                        <li>Check for endgame conditions</li>
+                    </ul>
+                    <p>
+                        There is a specified maximum turn limit for each map.<br/>
+
+                        A turn is defined as the above steps. They are performed up to the maximum number of turns times and then the game stops. 
+                    </p>
+                </div>
+                <div>
+                    <div>
+                        <h4 id="game-specification-phases">Phases</h4>
+                        <p>
+                            After receiving complete orders from the players, the engine then updates the game state, advancing the game to the next turn. The following phases exists:<br/>
+                        </p>
+                        <ul>
+                            <li>Validate orders</li>
+                            <li>Execute orders (move)</li>
+                        </ul>
+                        <p>
+                            There is a specified maximum turn limit for each map.<br/>
+
+                            A turn is defined as the above steps. They are performed up to the maximum number of turns times and then the game stops. 
+                        </p>
+                    </div>
+                    <div>
+                        <h4 id="game-specification-endbotconditions">Endbot Conditions</h4>
+                        <p>
+                            Any of the following conditions will cause a player to finish participating in a game:<br/>
+                        </p>
+                        <ul>
+                            <li>The bot issued order to move outside game location</li>
+                            <li>The bot crashed</li>
+                            <li>The bot exceeded the time limit without completing its orders</li>
+                        </ul>
+                        <p>
+                            If a bot crashes or times out on a given turn then move received from that bot will not be executed for that turn.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 id="game-specification-scoring">Scoring</h4>
+                        <p>
+                            The objective of the game is to get the highest score.<br/>
+                            Each player have 1000 pts at start and it can increase or decrease based on rules below:
+                        </p>
+                        <div>
+                            <ul>
+                                <li>
+                                    <p>
+                                        Moving across map <b>decreases</b> your score by cost of each tile you moving
+                                    </p>
+                                    <img class="img-rounded" src="~/Content/images/Tutorial/move-cost.png"/>
+                                    <p>
+                                        In the following case a player's score will decrease by <i>3 + 3 + 3 + 8 + 8  = </i>25 pts.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Finding an artifact <b>increases or decreases</b> your score by cost of artifact
+                                    </p>
+                                    <img class="img-rounded" src="~/Content/images/Tutorial/objects-chests.png"/>
+                                    <p>
+                                        Notes: Chests are can be empty. Artifacts are can have <b>negative cost</b> if they influence badly on a player.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Finding an exit from location <b>increases</b> your score by 1000 pts
+                                    </p>
+                                    <img class="img-rounded" src="~/Content/images/Tutorial/move-exit.png"/>
+                                </li>
+                                <li>
+                                    <p>
+                                        Each 2 <i>saved</i> turn gives you an extra pts in case you find an exit from location.
+                                    </p>
+                                    <p>
+                                        Example: <i>Turns</i> parameter has 2000 qty. You have found an exit on 846 turn. Your score increases by <i>(2000 - 846) / 2 = </i>577 pts.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="page-header">
+                    <h2 id="artifacts">Artifacts</h2>
+                </div>
+                <p>
+                    Each artifact has it's own cost (pts) and possitive/nevative influence on a player.
+                </p>
+                <div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th></th>
+                            <th>Name</th>
+                            <th></th>
+                            <th>Speed</th>
+                            <th>Vision</th>
+                            <th>Weight</th>
+                            <th>Cost</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var artifacts = DomainContext.Instance.RepositoryFactory.GetArtifactRepository().GetAll();
+                                foreach (var artifact in artifacts)
+                                {
+                                    <tr>
+                                        <td>@artifact.Id</td>
+                                        <td>
+                                            <img class="img-rounded" src="@(Url.Action("Image", "Content", new { path = artifact.IconPath }))"/>
+                                        </td>
+                                        <td>
+                                            @artifact.Name
+                                        </td>
+                                        <td></td>
+                                        <td>@{
+                                                if (artifact.SpeedBonus.HasValue)
+                                                {
+                                                    @: @(new MvcHtmlString(string.Format("{2}{0}{1}{3}%",
+                                                        artifact.SpeedBonus.Value > 0.0 ? "+" : string.Empty,
+                                                        artifact.SpeedBonus.Value * 100,
+                                                        artifact.SpeedBonus.Value < 0.0 ? "<b>" : string.Empty,
+                                                        artifact.SpeedBonus.Value < 0.0 ? "</b>" : string.Empty)))
+                                                }
+                                            }
+                                        </td>
+                                        <td>@{
+                                                if (artifact.VisionBonus.HasValue)
+                                                {
+                                                    @: @(new MvcHtmlString(string.Format("{2}{0}{1}{3}%",
+                                                        artifact.VisionBonus.Value > 0.0 ? "+" : string.Empty,
+                                                        artifact.VisionBonus.Value * 100,
+                                                        artifact.VisionBonus.Value < 0.0 ? "<b>" : string.Empty,
+                                                        artifact.VisionBonus.Value < 0.0 ? "</b>" : string.Empty)));
+                                                }
+                                            }
+                                        </td>
+                                        <td>@artifact.Weight kg</td>
+                                        <td>@artifact.Cost pts</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="page-header">
+                    <h2 id="starter-package-overview">Starter package overview</h2>
+                </div>
+                <div>
+                    <h4 id="starter-package-overview-location">Location</h4>
+                    <p>
+                        Specified position in maps coordinates.
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </thead>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Row</td>
+                            <td>Row index</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Col</td>
+                            <td>Column index</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
