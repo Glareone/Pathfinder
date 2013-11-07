@@ -127,7 +127,7 @@ namespace Pathfinder.Core
         /// <summary>
         /// Gets your current location.
         /// </summary>
-        public Player Me
+        public Player Player
         {
             get;set;
         }
@@ -164,7 +164,7 @@ namespace Pathfinder.Core
         /// </summary>
         protected void CalculateVisibleTimes()
         {
-            var viewRadius = ViewRadius + Me.ViewRadiusBonus;
+            var viewRadius = ViewRadius + Player.ViewRadiusBonus;
 
             int squares = (int)Math.Floor(Math.Sqrt(viewRadius));
             for (int r = -1 * squares; r <= squares; ++r)
@@ -291,7 +291,7 @@ namespace Pathfinder.Core
         /// <param name="player"></param>
         public GameState SetPlayerLocation(Player player)
         {
-            Me = player;
+            Player = player;
 
             return this;
         }

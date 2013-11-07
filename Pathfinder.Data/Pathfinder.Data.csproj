@@ -53,20 +53,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Icons\Artifacts\artifact_1.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_10.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_11.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_12.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_13.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_14.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_2.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_3.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_4.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_5.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_6.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_7.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_8.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_9.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_1.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_10.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_11.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_12.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_13.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_14.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_2.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_3.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_4.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_5.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_6.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_7.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_8.png" />
+    <EmbeddedResource Include="Repository\Artifacts\artifact_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Icons\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -37,7 +37,7 @@
                     return Direction.None;
                 }
 
-                var destination = state.GetDestination(state.Me, direction);
+                var destination = state.GetDestination(state.Player, direction);
                 if (destination.Equals(previousLoc))
                 {
                     continue;

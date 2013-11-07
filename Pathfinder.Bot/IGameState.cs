@@ -42,7 +42,7 @@ namespace Pathfinder.Bot
         /// <summary>
         /// Gets your current location.
         /// </summary>
-        Player Me { get; }
+        Player Player { get; }
 
         /// <summary>
         /// Gets whether <paramref name="location"/> is passable or not.

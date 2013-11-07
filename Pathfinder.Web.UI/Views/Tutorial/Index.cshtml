@@ -1,5 +1,9 @@
 ﻿@using Pathfinder.Domain
 @using Pathfinder.Web.UI.Models
+
+@{
+    ViewBag.Title = "Pathfinder | Tutorial";
+}
 <style>
      .bs-sidebar .nav .nav {
          display: block;
@@ -407,7 +411,7 @@
                 <div>
                     <h4 id="starter-package-overview-interface-igamestate">interface IGameState</h4>
                     <p>
-                        
+                        Provides game state. <i>Player's dependent.</i>
                     </p>
                     <table class="table">
                         <thead>
@@ -415,13 +419,97 @@
                             <th style="width: 250px;">Name</th>
                             <th>Description</th>
                         </thead>
-                        
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Width</td>
+                            <td>Width of the map</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Height</td>
+                            <td>Height of the map</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>LoadingTimeRemaining</td>
+                            <td>Allowed loading time remaining (ms)</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>TimeRemaining</td>
+                            <td>Allowed turn time remaining (ms)</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Turn</td>
+                            <td>Current turn number</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Turns</td>
+                            <td>Maximum available turns count</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>ViewRadius</td>
+                            <td>View radius (tiles)</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/property_icon.gif"/></td>
+                            <td>Player</td>
+                            <td>Player's representation (location)</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>Aim</td>
+                            <td>Gets location by destination</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>IsPassable</td>
+                            <td>Checks whether is passable or not</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>GetPassCost</td>
+                            <td>Gets cost of moving on this location</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>IsVisible</td>
+                            <td>Checks if visible</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>IsEnemy</td>
+                            <td>Checks if enemy</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>IsChest</td>
+                            <td>Checks if chest</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>IsExit</td>
+                            <td>Checks if exit from location</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>GetDestination</td>
+                            <td>Gets destination location</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                            <td>GetDistance</td>
+                            <td>Gets distance between locations</td>
+                        </tr>
                     </table>
                 </div>
                 <div>
                     <h4 id="starter-package-overview-interface-ibot">interface IBot</h4>
                     <p>
-                        
+                        Bot definition.
                     </p>
                     <table class="table">
                         <thead>
@@ -432,33 +520,25 @@
                         <tr>
                             <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
                             <td>Load</td>
-                            <td></td>
+                            <td>Loading step. You can load / cache / calculate all data you needed. Be aware that time is limited by <i>LoadingTime</i></td>
                         </tr>
                         <tr>
                             <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
                             <td>DoTurn</td>
-                            <td></td>
+                            <td>Performing step and return direction in which player should be moved. This time is limited by <i>TurnTime</i></td>
                         </tr>
                         <tr>
                             <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
                             <td>Unload</td>
-                            <td></td>
+                            <td>Unload previously loaded resources.</td>
                         </tr>
                     </table>
                 </div>
                 <div>
                     <h4 id="starter-package-overview-class-mybot">class MyBot : <a href="#starter-package-overview-interface-ibot">IBot</a></h4>
                     <p>
-                        
+                        Your bot implementation.
                     </p>
-                    <table class="table">
-                        <thead>
-                            <th style="width: 20px;"></th>
-                            <th style="width: 250px;">Name</th>
-                            <th>Description</th>
-                        </thead>
-                        
-                    </table>
                 </div>
             </div>
         </div>
