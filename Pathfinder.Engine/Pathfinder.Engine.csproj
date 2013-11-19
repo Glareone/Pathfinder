@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{53430992-6C99-44A6-9585-53CABCB87965}</ProjectGuid>
+    <ProjectGuid>{F485E19E-4E41-40E0-81A6-8E994ED8B152}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pathfinder.Core</RootNamespace>
-    <AssemblyName>Pathfinder.Core</AssemblyName>
+    <RootNamespace>Pathfinder.Engine</RootNamespace>
+    <AssemblyName>Pathfinder.Engine</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,12 +23,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -39,22 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameState.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
-      <Project>{3804c157-7f4c-42af-a2a4-5c3b4503c920}</Project>
-      <Name>Pathfinder.Bot</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pathfinder.Data\Pathfinder.Data.csproj">
-      <Project>{668332c1-dc4e-4a12-a218-b6341a172f4a}</Project>
-      <Name>Pathfinder.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pathfinder.Domain\Pathfinder.Domain.csproj">
-      <Project>{cc12d821-6169-4cea-a546-4efb12f6dd95}</Project>
-      <Name>Pathfinder.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

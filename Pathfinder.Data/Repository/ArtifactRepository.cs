@@ -4,17 +4,17 @@ using Pathfinder.Domain.Repository;
 
 namespace Pathfinder.Data.Repository
 {
-    public class ArtifactRepository : RepositoryBase<ArtifactEntity>, IArtifactRepository
+    public class ArtifactRepository : RepositoryBase<Artifact>, IArtifactRepository
     {
         /// <summary>
         /// Get all
         /// </summary>
         /// <returns></returns>
-        public override List<ArtifactEntity> GetAll()
+        public override List<Artifact> GetAll()
         {
-            return new List<ArtifactEntity>
+            return new List<Artifact>
                 {
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 1,
                             Name = "Leather boots",
@@ -23,7 +23,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_1.png",
                             Weight = 2.08
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 2,
                             Name = "Leather mail",
@@ -32,7 +32,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_2.png",
                             Weight = 6.90
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 3,
                             Name = "Traveller's journal",
@@ -41,7 +41,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_3.png",
                             Weight = .86
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 4,
                             Name = "Signet Ring",
@@ -49,7 +49,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_4.png",
                             Weight = .01
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 5,
                             Name = "Silver ring",
@@ -57,7 +57,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_5.png",
                             Weight = .01
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 6,
                             Name = "Jasper",
@@ -65,7 +65,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_6.png",
                             Weight = .5
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 7,
                             Name = "Lazuli",
@@ -74,7 +74,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_7.png",
                             Weight = .55
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 8,
                             Name = "Sapphire",
@@ -83,7 +83,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_8.png",
                             Weight = .5
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 9,
                             Name = "Potion of Poison",
@@ -93,7 +93,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_9.png",
                             Weight = .02
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 10,
                             Name = "Potion of Speed",
@@ -102,7 +102,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_10.png",
                             Weight = .02
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 11,
                             Name = "Axe",
@@ -111,7 +111,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_11.png",
                             Weight = 3.11
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 12,
                             Name = "Battle axe",
@@ -120,7 +120,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_12.png",
                             Weight = 4.66
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 13,
                             Name = "Crossbow",
@@ -129,7 +129,7 @@ namespace Pathfinder.Data.Repository
                             IconPath = "Artifacts.artifact_13.png",
                             Weight = 4.59
                         },
-                    new ArtifactEntity
+                    new Artifact
                         {
                             Id = 14,
                             Name = "Bow",

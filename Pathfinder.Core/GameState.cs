@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Pathfinder.Bot;
+using Pathfinder.Domain.Entities;
+using Pathfinder.Domain.Tiles;
 
 namespace Pathfinder.Core
 {
@@ -33,6 +35,7 @@ namespace Pathfinder.Core
         }
 
         protected Tile[,] Map { get; set; }
+
         /// <summary>
         /// Gets the width of the map.
         /// </summary>
@@ -187,7 +190,7 @@ namespace Pathfinder.Core
         /// <returns><c>true</c> if the location is not water, <c>false</c> otherwise.</returns>
         public bool IsPassable(Location location)
         {
-            return Map[location.Row, location.Col].Cost.HasValue;
+            return Map[location.Row, location.Col].Cost != int.MaxValue;
         }
 
         /// <summary>
@@ -197,7 +200,7 @@ namespace Pathfinder.Core
         /// <returns></returns>
         public int GetPassCost(Location location)
         {
-            return Map[location.Row, location.Col].Cost.GetValueOrDefault(int.MaxValue);
+            return Map[location.Row, location.Col].Cost;
         }
 
         /// <summary>

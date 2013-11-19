@@ -2,7 +2,7 @@
 
 namespace Pathfinder.Domain.Repository
 {
-    public interface IArtifactRepository : IRepositoryBase<ArtifactEntity>
+    public interface IArtifactRepository : IRepositoryBase<Artifact>
     {
         
     }

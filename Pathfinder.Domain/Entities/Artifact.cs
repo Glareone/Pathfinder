@@ -1,8 +1,6 @@
-﻿using System.Drawing;
-
-namespace Pathfinder.Domain.Entities
+﻿namespace Pathfinder.Domain.Entities
 {
-    public class ArtifactEntity : DomainEntity
+    public class Artifact : DomainEntity
     {
         /// <summary>
         /// Name of artifact

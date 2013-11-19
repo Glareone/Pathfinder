@@ -15,5 +15,11 @@ namespace Pathfinder.Domain
         /// </summary>
         /// <returns></returns>
         IArtifactRepository GetArtifactRepository();
+
+        /// <summary>
+        /// Gets Map repository
+        /// </summary>
+        /// <returns></returns>
+        IMapRepository GetMapRepository();
     }
 }

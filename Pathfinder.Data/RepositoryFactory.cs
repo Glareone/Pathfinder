@@ -28,5 +28,14 @@ namespace Pathfinder.Data
         {
             return new ArtifactRepository();
         }
+
+        /// <summary>
+        /// Gets Map repository
+        /// </summary>
+        /// <returns></returns>
+        public IMapRepository GetMapRepository()
+        {
+            return new MapRepository();
+        }
     }
 }
