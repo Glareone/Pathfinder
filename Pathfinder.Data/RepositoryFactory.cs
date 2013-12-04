@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Pathfinder.Data.Repository;
+﻿using Pathfinder.Data.Repository;
 using Pathfinder.Domain;
 using Pathfinder.Domain.Repository;
 
@@ -11,6 +6,11 @@ namespace Pathfinder.Data
 {
     public class RepositoryFactory : IRepositoryFactory
     {
+        /// <summary>
+        /// Person repository instance
+        /// </summary>
+        public IPersonRepository PersonRepository { get; set; }
+
         /// <summary>
         /// Gets content repository
         /// </summary>
@@ -36,6 +36,15 @@ namespace Pathfinder.Data
         public IMapRepository GetMapRepository()
         {
             return new MapRepository();
+        }
+
+        /// <summary>
+        /// Gets person repository
+        /// </summary>
+        /// <returns></returns>
+        public IPersonRepository GetPersonRepository()
+        {
+            return PersonRepository;
         }
     }
 }

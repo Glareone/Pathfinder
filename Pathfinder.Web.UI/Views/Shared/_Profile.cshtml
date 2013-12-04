@@ -1,0 +1,59 @@
+﻿@using Pathfinder.Web.Core
+@model Pathfinder.Web.UI.Models.LoginModel
+
+@if (!LoginManager.Instance.IsSingedIn())
+{
+    <form id="signin" class="navbar-form navbar-right" method="post">
+        <div class="form-group">
+            @Html.TextBoxFor(x => x.Username, new
+                                                         {
+                                                             @class = "form-control",
+                                                             placeholder = "Username"
+                                                         })
+        </div>
+        <div class="form-group">
+            @Html.PasswordFor(x => x.Password, new
+                                                        {
+                                                            @class = "form-control",
+                                                            placeholder = "Password"
+                                                        })
+        </div>
+        <button id="btn-signin" class="btn btn-success">Sign in</button>
+        <button id="btn-signup" class="btn btn-default">Sign up</button>
+    </form>
+    
+    <script type="text/javascript">
+        $(function () {
+            $('#btn-signin').click(function () {
+                $('#signin').attr('action', '@(Url.Action("SignIn", "Login"))')[0].submit();
+            });
+
+            $('#btn-signup').click(function () {
+                $('#signin').attr('action', '@(Url.Action("SingUp", "Login"))')[0].submit();
+            });
+        });
+    </script>
+}
+else
+{
+    <form id="signedin" class="navbar-form navbar-right" method="post">
+        <button id="btn-profile" class="btn btn-success">
+            <span class="glyphicon glyphicon-user"></span>
+            <span> @LoginManager.Instance.Current().DisplayName's profile</span>
+        </button>
+        <button id="btn-signout" class="btn btn-default">Sign out</button>
+    </form>
+    
+    <script type="text/javascript">
+        $(function () {
+            $('#btn-profile').click(function () {
+                $('#signedin').attr('action', '@(Url.Action("Index", "Profile"))')[0].submit();
+            });
+            
+            $('#btn-signout').click(function () {
+                $('#signedin').attr('action', '@(Url.Action("SingOut", "Login"))')[0].submit();
+            });
+        });
+    </script>
+}
+

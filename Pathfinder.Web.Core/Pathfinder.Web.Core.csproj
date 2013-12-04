@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{53430992-6C99-44A6-9585-53CABCB87965}</ProjectGuid>
+    <ProjectGuid>{D01B948B-D466-43A1-855B-31E154212D73}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pathfinder.Core</RootNamespace>
-    <AssemblyName>Pathfinder.Core</AssemblyName>
+    <RootNamespace>Pathfinder.Web.Core</RootNamespace>
+    <AssemblyName>Pathfinder.Web.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,14 +30,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Activities" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Activities" />
-    <Reference Include="System.Xaml" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,15 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameEngineParameters.cs" />
-    <Compile Include="GamePlayer.cs" />
-    <Compile Include="GameState.cs" />
+    <Compile Include="LoginManager.cs" />
+    <Compile Include="PersonIdentity.cs" />
+    <Compile Include="PersonPrincipal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
       <Project>{3804c157-7f4c-42af-a2a4-5c3b4503c920}</Project>
       <Name>Pathfinder.Bot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Core\Pathfinder.Core.csproj">
+      <Project>{53430992-6c99-44a6-9585-53cabcb87965}</Project>
+      <Name>Pathfinder.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pathfinder.Data\Pathfinder.Data.csproj">
       <Project>{668332c1-dc4e-4a12-a218-b6341a172f4a}</Project>
@@ -61,12 +65,14 @@
       <Project>{cc12d821-6169-4cea-a546-4efb12f6dd95}</Project>
       <Name>Pathfinder.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="GameEngine.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
+    <ProjectReference Include="..\Pathfinder.Engine\Pathfinder.Engine.csproj">
+      <Project>{f485e19e-4e41-40e0-81a6-8e994ed8b152}</Project>
+      <Name>Pathfinder.Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Security\Pathfinder.Security.csproj">
+      <Project>{943f0226-5636-4af5-89a0-b58333c56c97}</Project>
+      <Name>Pathfinder.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

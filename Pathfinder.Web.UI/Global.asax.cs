@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Pathfinder.Data;
 using Pathfinder.Domain;
+using Pathfinder.Web.UI.Data;
 
 namespace Pathfinder.Web.UI
 {
@@ -19,7 +20,11 @@ namespace Pathfinder.Web.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
 
-            DomainContext.Instance.RepositoryFactory = new RepositoryFactory();
+            DomainContext.Instance.RepositoryFactory = new RepositoryFactory
+                                                           {
+                                                               PersonRepository = new AppDataFilePersonRepository()
+                                                           };
+            DataContext.Instance.FileStorage = new AppDataFileStorage();
         }
     }
 }

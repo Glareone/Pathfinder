@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 
+using Pathfinder.Web.UI.Models;
+
 namespace Pathfinder.Web.UI.Controllers
 {
     public class TutorialController : ControllerBase
@@ -9,7 +11,10 @@ namespace Pathfinder.Web.UI.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(new ModelBase
+            {
+                Navigation = Navigation.Tutorial
+            });
         }
     }
 }

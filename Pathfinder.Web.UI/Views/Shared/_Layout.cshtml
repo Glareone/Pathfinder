@@ -1,4 +1,9 @@
 ﻿@using System.Web.Optimization
+@using Pathfinder.Web.Core
+@using Pathfinder.Web.UI.Models
+
+@model ModelBase
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,12 +11,14 @@
         <title>@(ViewBag.Title ?? "Pathfinder")</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
+        @Scripts.Render("~/js")
+        @RenderSection("Scripts", required: false)
         @RenderSection("head", required: false)
         @Html.Partial("_html5shiv")
         @* favicons and touch icons go here *@
     </head>
     <body>
-        <div class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,26 +26,33 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-random"></span> Pathfinder</a>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="@Url.Action("Index", "Tutorial")"><span class="glyphicon glyphicon-book"></span> Tutorial</a></li>
+                        <li class="@(Model.Navigation == Navigation.Tutorial ? "active" : string.Empty)"><a href="@Url.Action("Index", "Tutorial")"><span class="glyphicon glyphicon-book"></span> Tutorial</a></li>
+                    </ul>
+                    @if (LoginManager.Instance.IsSingedIn())
+                    {
+                        <ul class="nav navbar-nav">
+                        <li class="@(Model.Navigation == Navigation.Profile ? "active" : string.Empty)"><a href="@Url.Action("Index", "Profile")"><span class="glyphicon glyphicon-wrench"></span> Profile</a></li>
+                    </ul>
+                    }
+                    <ul class="nav navbar-nav navbar-right">
+                        @Html.Partial("_Profile", new LoginModel())
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div>
             @Html.Partial("_alerts")
             @Html.Partial("_validationSummary")
-            @RenderBody()   
+            @RenderBody()
             
             <footer>
 
             </footer> 
         </div>
-        @Scripts.Render("~/js")
-        @RenderSection("Scripts", required: false)
     </body>
 </html>
 

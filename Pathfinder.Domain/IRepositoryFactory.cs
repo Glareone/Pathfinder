@@ -21,5 +21,11 @@ namespace Pathfinder.Domain
         /// </summary>
         /// <returns></returns>
         IMapRepository GetMapRepository();
+
+        /// <summary>
+        /// Gets person repository
+        /// </summary>
+        /// <returns></returns>
+        IPersonRepository GetPersonRepository();
     }
 }

@@ -117,14 +117,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
+    <Compile Include="Controllers\BotController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FileStorageController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TutorialController.cs" />
+    <Compile Include="Data\AppDataFileStorage.cs" />
+    <Compile Include="Data\AppDataFilePersonRepository.cs" />
+    <Compile Include="Data\PathMap.cs" />
+    <Compile Include="Data\PersonStorage.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\Navigation.cs" />
+    <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\StarterPackageModel.cs" />
     <Compile Include="Models\StarterPackageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,12 +199,17 @@
     <Content Include="Views\Shared\_validationSummary.cshtml" />
     <Content Include="Views\Shared\_alerts.cshtml" />
     <Content Include="Views\Tutorial\Index.cshtml" />
+    <Content Include="Views\Bot\Index.cshtml" />
+    <Content Include="Views\Shared\_Profile.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Maps\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
@@ -233,6 +249,14 @@
       <Project>{cc12d821-6169-4cea-a546-4efb12f6dd95}</Project>
       <Name>Pathfinder.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Security\Pathfinder.Security.csproj">
+      <Project>{943f0226-5636-4af5-89a0-b58333c56c97}</Project>
+      <Name>Pathfinder.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Web.Core\Pathfinder.Web.Core.csproj">
+      <Project>{d01b948b-d466-43a1-855b-31e154212d73}</Project>
+      <Name>Pathfinder.Web.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -249,7 +273,7 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
+          <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>49261</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Pathfinder</IISUrl>

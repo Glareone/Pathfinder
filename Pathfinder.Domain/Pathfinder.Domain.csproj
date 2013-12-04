@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -42,9 +43,12 @@
   <ItemGroup>
     <Compile Include="Entities\Artifact.cs" />
     <Compile Include="DomainContext.cs" />
+    <Compile Include="Entities\Bot.cs" />
     <Compile Include="Entities\DomainEntity.cs" />
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\Map.cs" />
+    <Compile Include="Entities\Person.cs" />
+    <Compile Include="Repository\IPersonRepository.cs" />
     <Compile Include="Tiles\ArtifactTile.cs" />
     <Compile Include="Tiles\NavigationTile.cs" />
     <Compile Include="Tiles\SpotType.cs" />
