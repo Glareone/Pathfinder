@@ -1,6 +1,5 @@
-﻿using System.Security.Principal;
-
-using Pathfinder.Domain.Entities;
+﻿using System;
+using System.Security.Principal;
 
 namespace Pathfinder.Web.Core
 {
@@ -9,9 +8,9 @@ namespace Pathfinder.Web.Core
         /// <summary>
         /// Initializes a new instance of <see cref="PersonPrincipal"/> class
         /// </summary>
-        public PersonPrincipal(Person person)
+        public PersonPrincipal(Guid personId)
         {
-            Identity = new PersonIdentity(person);
+            Identity = new PersonIdentity(personId);
         }
 
         /// <summary>

@@ -1,10 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Pathfinder.Domain.Entities
 {
     [Serializable]
-    public class Person : EntityBase<Guid>
+    public class Person : DomainTransferableEntity
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="Person"/> class
+        /// </summary>
+        public Person()
+        {
+            Bots = new List<Bot>();
+        }
+
         /// <summary>
         /// Username of person
         /// </summary>
@@ -42,6 +51,11 @@ namespace Pathfinder.Domain.Entities
         }
 
         /// <summary>
+        /// Bots collection
+        /// </summary>
+        public List<Bot> Bots { get; set; }
+
+        /// <summary>
         /// Saves instance
         /// </summary>
         public void Save()
@@ -49,15 +63,6 @@ namespace Pathfinder.Domain.Entities
             DomainContext.Instance.RepositoryFactory
                 .GetPersonRepository()
                 .Save(this);
-        }
-
-        /// <summary>
-        /// Checks if persisted
-        /// </summary>
-        /// <returns></returns>
-        public override bool IsPersisted()
-        {
-            return Id != Guid.Empty;
         }
     }
 }

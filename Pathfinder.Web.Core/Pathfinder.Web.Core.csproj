@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BotManager.cs" />
     <Compile Include="LoginManager.cs" />
     <Compile Include="PersonIdentity.cs" />
     <Compile Include="PersonPrincipal.cs" />

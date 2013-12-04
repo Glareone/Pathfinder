@@ -1,6 +1,5 @@
-﻿using System.Security.Principal;
-
-using Pathfinder.Domain.Entities;
+﻿using System;
+using System.Security.Principal;
 
 namespace Pathfinder.Web.Core
 {
@@ -9,16 +8,16 @@ namespace Pathfinder.Web.Core
         /// <summary>
         /// Initializes a new instance of <see cref="PersonIdentity"/> class
         /// </summary>
-        /// <param name="person"></param>
-        public PersonIdentity(Person person)
+        /// <param name="personId"></param>
+        public PersonIdentity(Guid personId)
         {
-            Person = person;
+            PersonId = personId;
         }
 
         /// <summary>
-        /// Gets person
+        /// Gets person identifier
         /// </summary>
-        public Person Person
+        public Guid PersonId
         {
             get;
             private set;
@@ -34,7 +33,7 @@ namespace Pathfinder.Web.Core
         {
             get
             {
-                return Person.DisplayName;
+                return string.Format("PersonId:{0}", PersonId);
             }
         }
 

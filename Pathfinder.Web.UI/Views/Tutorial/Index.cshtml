@@ -569,6 +569,28 @@
                         <p>
                             Your bot implementation.
                         </p>
+                        <table class="table">
+                            <thead>
+                                <th style="width: 20px;"></th>
+                                <th style="width: 250px;">Name</th>
+                                <th>Description</th>
+                            </thead>
+                            <tr>
+                                <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                                <td>Load</td>
+                                <td>Loading step. You can load / cache / calculate all data you needed. Be aware that time is limited by <i>LoadingTime</i></td>
+                            </tr>
+                            <tr>
+                                <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                                <td>DoTurn</td>
+                                <td>Performing step and return direction in which player should be moved. This time is limited by <i>TurnTime</i></td>
+                            </tr>
+                            <tr>
+                                <td><img src="~/Content/images/Tutorial/method_icon.gif"/></td>
+                                <td>Unload</td>
+                                <td>Unload previously loaded resources.</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

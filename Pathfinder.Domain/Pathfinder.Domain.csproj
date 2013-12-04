@@ -45,6 +45,7 @@
     <Compile Include="DomainContext.cs" />
     <Compile Include="Entities\Bot.cs" />
     <Compile Include="Entities\DomainEntity.cs" />
+    <Compile Include="Entities\DomainTransferableEntity.cs" />
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\Map.cs" />
     <Compile Include="Entities\Person.cs" />

@@ -132,12 +132,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BotModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Navigation.cs" />
     <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\StarterPackageModel.cs" />
     <Compile Include="Models\StarterPackageType.cs" />
+    <Compile Include="Models\UploadBotModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\Alerts.cs" />
     <Compile Include="Support\Constants.cs" />

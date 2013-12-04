@@ -1,4 +1,5 @@
-﻿@model Pathfinder.Web.UI.Models.ProfileModel
+﻿@using Pathfinder.Web.UI.Models
+@model Pathfinder.Web.UI.Models.ProfileModel
 
 @{
     ViewBag.Title = "Pathfinder | Tutorial";
@@ -10,7 +11,14 @@
             <div role="complementary" class="bs-sidebar hidden-print affix">
                 <ul class="nav bs-sidenav">
                     <li>
-                        <a href="#profile-personal-information">Personal information</a>
+                        <a href="#profile-personal-information"><span class="glyphicon glyphicon-user"></span> Personal information</a>
+                    </li>
+                    <li>
+                        <a href="#profile-bots"><span class="glyphicon glyphicon-play"></span> Bots</a>
+                        <ul class="nav">
+                            <li><a href="#profile-bots-upload">Upload bot</a></li>
+                            <li><a href="#profile-bots-manage">Manage bots</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -19,21 +27,22 @@
             <div class="bs-docs-section">
                 <div>
                     <div class="page-header">
-                        <h2 id="profile-personal-information">Personal information</h2>
+                        <h2 id="profile-personal-information"><span class="glyphicon glyphicon-user"></span> Personal information</h2>
                     </div>
                     <p>
+                        Edit your personal information.
                     </p>
                     <div>
                         <form class="form-horizontal" role="form" method="post" action="@(Url.Action("EditPersonalInformation", "Profile"))">
-                            @Html.HiddenFor(x => x.Person.Id)
+                            @Html.HiddenFor(x => x.PersonId)
                             <div class="form-group">
-                                @Html.LabelFor(x => x.Person.Username, "Username", new
+                                @Html.LabelFor(x => x.Username, "Username", new
                                                                             {
                                                                                 @class = "col-sm-2 control-label"
                                                                             })
                                 <div class="col-sm-10">
                                     <span class="form-control">
-                                        @Html.DisplayFor(x => x.Person.Username,
+                                        @Html.DisplayFor(x => x.Username,
                                                                     new {
                                                                         id = "UserName"
                                                                     })
@@ -41,12 +50,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(x => x.Person.FirstName, "First name", new
+                                @Html.LabelFor(x => x.FirstName, "First name", new
                                                                             {
                                                                                 @class = "col-sm-2 control-label"
                                                                             })
                                 <div class="col-sm-10">
-                                    @Html.TextBoxFor(x => x.Person.FirstName, new
+                                    @Html.TextBoxFor(x => x.FirstName, new
                                                                                   {
                                                                                       @class = "form-control",
                                                                                       id = "FirstName",
@@ -55,12 +64,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(x => x.Person.LastName, "Last name", new
+                                @Html.LabelFor(x => x.LastName, "Last name", new
                                                                             {
                                                                                 @class = "col-sm-2 control-label"
                                                                             })
                                 <div class="col-sm-10">
-                                    @Html.TextBoxFor(x => x.Person.LastName, new
+                                    @Html.TextBoxFor(x => x.LastName, new
                                                                                   {
                                                                                       @class = "form-control",
                                                                                       id = "LastName",
@@ -70,6 +79,94 @@
                             </div>
                           <button type="submit" class="btn btn-default">Submit</button>
                         </form>
+                    </div>
+                </div>
+                <div>
+                    <div class="page-header">
+                        <h2 id="profile-bots"><span class="glyphicon glyphicon-play"></span> Bots</h2>
+                    </div>
+                    <p>
+                        Manage your bots. You can have multiple bots at the same time. Previous bots saved with <b>same alias</b> will be <b>replaced</b>.
+                    </p>
+                    <div>
+                        <h4 id="profile-bots-upload">Upload bot</h4>
+                        <p>
+                            Choose a *.dll file with contains @Html.ActionLink("IBot", "Index", "Tutorial", null, null, "starter-package-overview-interface-ibot", null, null) implementation.
+                        </p>
+                        @using (Html.BeginForm("UploadBot", "Profile", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.HiddenFor(x => x.PersonId)
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.UploadBot.BotAlias, "Alias", new
+                                                                            {
+                                                                                @class = "col-sm-2 control-label"
+                                                                            })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.UploadBot.BotAlias, new
+                                                                        {
+                                                                            @class = "form-control",
+                                                                            id = "BotAlias",
+                                                                            placeholder = "Bot alias"
+                                                                        })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.UploadBot.BotDescription, "Description", new
+                                                                            {
+                                                                                @class = "col-sm-2 control-label"
+                                                                            })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.UploadBot.BotDescription, new
+                                                                        {
+                                                                            @class = "form-control",
+                                                                            id = "BotDescription",
+                                                                            placeholder = "Bot description"
+                                                                        })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10">
+                                    <div style="position:relative;">
+                                        <a class='btn btn-primary' href='javascript:;'>
+                                            Choose a file...
+                                            <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                        </a>
+                                        &nbsp;
+                                        <span class='label label-info' id="upload-file-info"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-default">Upload</button>
+                        }
+                    </div>
+                    <div>
+                        <h4 id="profile-bots-manage">Manage bots</h4>
+                        <p>
+                            Manage your bots.
+                        </p>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Alias</th>
+                                    <th>Description</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int index = 0; index < Model.Bots.Count; index++)
+                                    {
+                                        var bot = Model.Bots[index];
+                                        <tr>
+                                            <td>@(index + 1)</td>
+                                            <td>@bot.Alias</td>
+                                            <td>@bot.Description</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

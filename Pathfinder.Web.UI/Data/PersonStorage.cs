@@ -40,11 +40,6 @@ namespace Pathfinder.Web.UI.Data
         public List<Person> Persons { get; private set; }
 
         /// <summary>
-        /// Sequence
-        /// </summary>
-        public int Sequence { get; set; }
-
-        /// <summary>
         /// Deserializes from file
         /// </summary>
         /// <param name="filePath"></param>
@@ -78,15 +73,6 @@ namespace Pathfinder.Web.UI.Data
         public object Clone()
         {
             return MemberwiseClone();
-        }
-
-        /// <summary>
-        /// Gets next sequence
-        /// </summary>
-        /// <returns></returns>
-        public int NextSequence()
-        {
-            return ++Sequence;
         }
     }
 }

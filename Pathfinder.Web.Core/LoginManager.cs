@@ -106,19 +106,25 @@ namespace Pathfinder.Web.Core
                 if (authCookie != null)
                 {
                     var ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                    if (ticket != null)
+                    if (ticket != null && !ticket.Expired)
                     {
                         var person = DomainContext.Instance.RepositoryFactory.GetPersonRepository()
-                            .Find(ticket.Name);
+                            .Find(Guid.Parse(ticket.Name));
                         if (person != null)
                         {
-                            HttpContext.Current.User = currentPrincipal = new PersonPrincipal(person);
+                            HttpContext.Current.User = currentPrincipal = new PersonPrincipal(person.Id);
                         }
                     }
                 }
             }
 
-            return currentPrincipal != null ? ((PersonIdentity)currentPrincipal.Identity).Person : null;
+            if (currentPrincipal != null)
+            {
+                return DomainContext.Instance.RepositoryFactory.GetPersonRepository()
+                    .Find(((PersonIdentity)currentPrincipal.Identity).PersonId);
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -129,9 +135,9 @@ namespace Pathfinder.Web.Core
         {
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
                 1,
-                person.Username,
+                person.Id.ToString(),
                 DateTime.Now,
-                DateTime.Now.AddMinutes(30),
+                DateTime.Now.AddDays(14),
                 true,
                 string.Empty,
                 FormsAuthentication.FormsCookiePath);

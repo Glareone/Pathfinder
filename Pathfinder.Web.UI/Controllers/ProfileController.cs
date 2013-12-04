@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 
 using Pathfinder.Domain;
 using Pathfinder.Web.Core;
@@ -15,11 +16,11 @@ namespace Pathfinder.Web.UI.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(new ProfileModel
-            {
-                Person = LoginManager.Instance.Current(),
-                Navigation = Navigation.Profile
-            });
+            var person = LoginManager.Instance.Current();
+            return View(new ProfileModel(person)
+                {
+                    Navigation = Navigation.Profile
+                });
         }
 
         [HttpPost]
@@ -29,12 +30,41 @@ namespace Pathfinder.Web.UI.Controllers
             {
                 var person = DomainContext.Instance.RepositoryFactory
                     .GetPersonRepository()
-                    .Find(model.Person.Id);
+                    .Find(model.PersonId);
 
-                person.FirstName = model.Person.FirstName;
-                person.LastName = model.Person.LastName;
+                person.FirstName = model.FirstName;
+                person.LastName = model.LastName;
 
                 person.Save();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult UploadBot(ProfileModel model, HttpPostedFileBase file)
+        {
+            if (!string.IsNullOrEmpty(model.UploadBot.BotAlias))
+            {
+                if (file != null)
+                {
+                    var person = DomainContext.Instance.RepositoryFactory
+                        .GetPersonRepository()
+                        .Find(model.PersonId);
+
+                    var bot = new BotManager().SaveBot(person.Id, model.UploadBot.BotAlias, model.UploadBot.BotDescription, file.InputStream);
+
+                    person.Bots.Add(bot);
+                    person.Save();
+                }
+                else
+                {
+                    Error("Bot file is not provided.");
+                }
+            }
+            else
+            {
+                Error("Bot alias is empty.");
             }
 
             return RedirectToAction("Index");
