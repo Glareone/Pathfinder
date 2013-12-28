@@ -15,7 +15,10 @@ namespace Pathfinder.Web.UI.Data
         /// <param name="file"></param>
         public void Save(string path, FileInfo file)
         {
-            throw new System.NotImplementedException();
+            using (var stream = File.OpenRead(file.FullName))
+            {
+                Save(path, stream);
+            }
         }
 
         /// <summary>

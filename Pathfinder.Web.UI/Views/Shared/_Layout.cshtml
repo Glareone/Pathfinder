@@ -11,6 +11,8 @@
         <title>@(ViewBag.Title ?? "Pathfinder")</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         @Scripts.Render("~/js")
         @RenderSection("Scripts", required: false)
         @RenderSection("head", required: false)
@@ -39,7 +41,7 @@
                     </ul>
                     }
                     <ul class="nav navbar-nav navbar-right">
-                        @Html.Partial("_Profile", new LoginModel())
+                        @*@Html.Partial("_Profile", new LoginModel())*@
                     </ul>
                 </div>
             </div>

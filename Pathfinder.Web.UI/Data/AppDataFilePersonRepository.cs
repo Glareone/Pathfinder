@@ -10,6 +10,7 @@ namespace Pathfinder.Web.UI.Data
     public class AppDataFilePersonRepository : IPersonRepository
     {
         private const string STORAGE_PATH = "PersonStorage/data.xml";
+        private const string STORAGE_PATH_BACKUP = "PersonStorage/data.backup.{0:yyyyddMMhhmmssfff}.xml";
 
         private PersonStorage _storage;
 
@@ -109,6 +110,10 @@ namespace Pathfinder.Web.UI.Data
         {
             var storageFile = DataContext.Instance.FileStorage.Load(STORAGE_PATH);
             Storage.Serialize(storageFile.FullName);
+
+            // backup
+            var backupStorageFile = DataContext.Instance.FileStorage.Load(string.Format(STORAGE_PATH_BACKUP, DateTime.Now));
+            Storage.Serialize(backupStorageFile.FullName);
         }
     }
 }
