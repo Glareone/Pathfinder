@@ -8,7 +8,7 @@ namespace Pathfinder.Web.Core
         /// <summary>
         /// Initializes a new instance of <see cref="PersonPrincipal"/> class
         /// </summary>
-        public PersonPrincipal(Guid personId)
+        public PersonPrincipal(int personId)
         {
             Identity = new PersonIdentity(personId);
         }

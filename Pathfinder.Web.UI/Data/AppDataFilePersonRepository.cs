@@ -71,11 +71,11 @@ namespace Pathfinder.Web.UI.Data
         }
 
         /// <summary>
-        /// Finds person by id
+        /// Gets person by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Person Find(Guid id)
+        public Person Get(int id)
         {
             return Storage.Persons.Find(x => x.Id == id);
         }
@@ -94,8 +94,6 @@ namespace Pathfinder.Web.UI.Data
             }
             else
             {
-                person.Id = Guid.NewGuid();
-
                 Storage.Persons.Add(person);
             }
 

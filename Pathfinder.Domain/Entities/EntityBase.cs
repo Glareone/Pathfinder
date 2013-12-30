@@ -1,7 +1,10 @@
-﻿namespace Pathfinder.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Pathfinder.Domain.Entities
 {
     public abstract class EntityBase<TId>
     {
+        [Key]
         public TId Id { get; set; }
 
         /// <summary>

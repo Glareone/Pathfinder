@@ -17,7 +17,7 @@ namespace Pathfinder.Web.Core
         /// <param name="description"></param>
         /// <param name="stream"></param>
         /// <returns></returns>
-        public Domain.Entities.Bot SaveBot(Guid personId, string alias, string description, Stream stream)
+        public Domain.Entities.Bot SaveBot(int personId, string alias, string description, Stream stream)
         {
             var botFilename = Guid.NewGuid().ToString().Replace("-", string.Empty);
 
@@ -27,7 +27,6 @@ namespace Pathfinder.Web.Core
 
             return new Domain.Entities.Bot
                           {
-                              Id = Guid.NewGuid(),
                               Alias = alias,
                               Description = description,
                               Filename = botFilename

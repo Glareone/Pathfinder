@@ -1,5 +1,4 @@
-﻿using System;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 
 namespace Pathfinder.Web.Core
 {
@@ -9,7 +8,7 @@ namespace Pathfinder.Web.Core
         /// Initializes a new instance of <see cref="PersonIdentity"/> class
         /// </summary>
         /// <param name="personId"></param>
-        public PersonIdentity(Guid personId)
+        public PersonIdentity(int personId)
         {
             PersonId = personId;
         }
@@ -17,7 +16,7 @@ namespace Pathfinder.Web.Core
         /// <summary>
         /// Gets person identifier
         /// </summary>
-        public Guid PersonId
+        public int PersonId
         {
             get;
             private set;

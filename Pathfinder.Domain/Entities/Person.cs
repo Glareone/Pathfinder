@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Pathfinder.Domain.Entities
 {
     [Serializable]
-    public class Person : DomainTransferableEntity
+    public class Person : DomainEntity
     {
         /// <summary>
         /// Initializes a new instance of <see cref="Person"/> class
@@ -53,7 +53,7 @@ namespace Pathfinder.Domain.Entities
         /// <summary>
         /// Bots collection
         /// </summary>
-        public List<Bot> Bots { get; set; }
+        public virtual List<Bot> Bots { get; set; }
 
         /// <summary>
         /// Saves instance

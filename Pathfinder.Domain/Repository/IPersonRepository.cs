@@ -22,11 +22,11 @@ namespace Pathfinder.Domain.Repository
         Person Find(string username);
 
         /// <summary>
-        /// Finds person by id
+        /// Gets person by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Person Find(Guid id);
+        Person Get(int id);
 
         /// <summary>
         /// Saves person

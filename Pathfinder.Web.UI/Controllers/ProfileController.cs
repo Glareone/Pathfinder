@@ -30,7 +30,7 @@ namespace Pathfinder.Web.UI.Controllers
             {
                 var person = DomainContext.Instance.RepositoryFactory
                     .GetPersonRepository()
-                    .Find(model.PersonId);
+                    .Get(model.PersonId);
 
                 person.FirstName = model.FirstName;
                 person.LastName = model.LastName;
@@ -50,7 +50,7 @@ namespace Pathfinder.Web.UI.Controllers
                 {
                     var person = DomainContext.Instance.RepositoryFactory
                         .GetPersonRepository()
-                        .Find(model.PersonId);
+                        .Get(model.PersonId);
 
                     var bot = new BotManager().SaveBot(person.Id, model.UploadBot.BotAlias, model.UploadBot.BotDescription, file.InputStream);
 

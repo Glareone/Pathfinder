@@ -109,7 +109,7 @@ namespace Pathfinder.Web.Core
                     if (ticket != null && !ticket.Expired)
                     {
                         var person = DomainContext.Instance.RepositoryFactory.GetPersonRepository()
-                            .Find(Guid.Parse(ticket.Name));
+                            .Get(int.Parse(ticket.Name));
                         if (person != null)
                         {
                             HttpContext.Current.User = currentPrincipal = new PersonPrincipal(person.Id);
@@ -121,7 +121,7 @@ namespace Pathfinder.Web.Core
             if (currentPrincipal != null)
             {
                 return DomainContext.Instance.RepositoryFactory.GetPersonRepository()
-                    .Find(((PersonIdentity)currentPrincipal.Identity).PersonId);
+                    .Get(((PersonIdentity)currentPrincipal.Identity).PersonId);
             }
 
             return null;

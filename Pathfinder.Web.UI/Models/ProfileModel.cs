@@ -35,7 +35,7 @@ namespace Pathfinder.Web.UI.Models
         /// <summary>
         /// Current person identifier
         /// </summary>
-        public Guid PersonId { get; set; }
+        public int PersonId { get; set; }
 
         /// <summary>
         /// Username

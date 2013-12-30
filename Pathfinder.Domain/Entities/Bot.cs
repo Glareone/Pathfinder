@@ -4,7 +4,7 @@ using Pathfinder.Bot;
 
 namespace Pathfinder.Domain.Entities
 {
-    public class Bot : DomainTransferableEntity
+    public class Bot : DomainEntity
     {
         /// <summary>
         /// Alias (user friendly name)
