@@ -42,6 +42,13 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
@@ -228,6 +235,10 @@
     <ProjectReference Include="..\Pathfinder.Core\Pathfinder.Core.csproj">
       <Project>{53430992-6c99-44a6-9585-53cabcb87965}</Project>
       <Name>Pathfinder.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Data.SqlServer\Pathfinder.Data.SqlServer.csproj">
+      <Project>{09541b29-73cc-442f-842b-37246d42cd4a}</Project>
+      <Name>Pathfinder.Data.SqlServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pathfinder.Data\Pathfinder.Data.csproj">
       <Project>{668332c1-dc4e-4a12-a218-b6341a172f4a}</Project>

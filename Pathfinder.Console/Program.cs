@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Pathfinder.Core;
 using Pathfinder.Data;
+using Pathfinder.Data.SqlServer;
 using Pathfinder.Domain;
 using Pathfinder.Domain.Tiles;
 
@@ -16,7 +17,7 @@ namespace Pathfinder.Console
     {
         static void Main(string[] args)
         {
-            DomainContext.Instance.RepositoryFactory = new RepositoryFactory();
+            DomainContext.Instance.RepositoryFactory = new SqlServerRepositoryFactory();
 
             var map1 = DomainContext.Instance.RepositoryFactory.GetMapRepository().Load(1);
 

@@ -4,7 +4,7 @@ using Pathfinder.Domain.Repository;
 
 namespace Pathfinder.Data
 {
-    public class RepositoryFactory : IRepositoryFactory
+    public abstract class RepositoryFactory : IRepositoryFactory
     {
         /// <summary>
         /// Person repository instance
@@ -42,9 +42,6 @@ namespace Pathfinder.Data
         /// Gets person repository
         /// </summary>
         /// <returns></returns>
-        public IPersonRepository GetPersonRepository()
-        {
-            return PersonRepository;
-        }
+        public abstract IPersonRepository GetPersonRepository();
     }
 }

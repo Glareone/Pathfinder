@@ -15,13 +15,6 @@ namespace Pathfinder.Domain.Repository
         Person Find(string username, string password);
 
         /// <summary>
-        /// Finds person username
-        /// </summary>
-        /// <param name="username"></param>
-        /// <returns></returns>
-        Person Find(string username);
-
-        /// <summary>
         /// Gets person by id
         /// </summary>
         /// <param name="id"></param>

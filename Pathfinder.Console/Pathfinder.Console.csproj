@@ -57,6 +57,10 @@
       <Project>{53430992-6c99-44a6-9585-53cabcb87965}</Project>
       <Name>Pathfinder.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Data.SqlServer\Pathfinder.Data.SqlServer.csproj">
+      <Project>{09541b29-73cc-442f-842b-37246d42cd4a}</Project>
+      <Name>Pathfinder.Data.SqlServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pathfinder.Data\Pathfinder.Data.csproj">
       <Project>{668332c1-dc4e-4a12-a218-b6341a172f4a}</Project>
       <Name>Pathfinder.Data</Name>
