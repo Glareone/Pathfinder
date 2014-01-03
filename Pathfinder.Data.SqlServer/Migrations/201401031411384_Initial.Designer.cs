@@ -13,7 +13,7 @@ namespace Pathfinder.Data.SqlServer.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201312301221473_Initial"; }
+            get { return "201401031411384_Initial"; }
         }
         
         string IMigrationMetadata.Source

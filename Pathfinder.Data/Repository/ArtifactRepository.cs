@@ -7,6 +7,16 @@ namespace Pathfinder.Data.Repository
     public class ArtifactRepository : RepositoryBase<Artifact>, IArtifactRepository
     {
         /// <summary>
+        /// Gets entity by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public override Artifact Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
         /// Get all
         /// </summary>
         /// <returns></returns>
@@ -140,6 +150,15 @@ namespace Pathfinder.Data.Repository
                         },
 
                 };
+        }
+
+        /// <summary>
+        /// Saves entity
+        /// </summary>
+        /// <param name="entity"></param>
+        public override void Save(Artifact entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

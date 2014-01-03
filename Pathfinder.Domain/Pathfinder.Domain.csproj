@@ -49,7 +49,10 @@
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\Map.cs" />
     <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Repository\IBotRepository.cs" />
     <Compile Include="Repository\IPersonRepository.cs" />
+    <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Tiles\ArtifactTile.cs" />
     <Compile Include="Tiles\NavigationTile.cs" />
     <Compile Include="Tiles\SpotType.cs" />

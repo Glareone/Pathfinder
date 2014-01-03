@@ -21,10 +21,7 @@ namespace Pathfinder.Web.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
 
-            DomainContext.Instance.RepositoryFactory = new SqlServerRepositoryFactory
-                                                           {
-                                                               PersonRepository = new AppDataFilePersonRepository()
-                                                           };
+            DomainContext.Instance.RepositoryFactory = new SqlServerRepositoryFactory();
             DataContext.Instance.FileStorage = new AppDataFileStorage();
         }
     }

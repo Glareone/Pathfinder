@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.IO;
+using System.Web;
 using System.Web.Mvc;
 
 using Pathfinder.Domain;
@@ -16,8 +17,8 @@ namespace Pathfinder.Web.UI.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var person = LoginManager.Instance.Current();
-            return View(new ProfileModel(person)
+            var user = LoginManager.Instance.Current();
+            return View(new ProfileModel(user)
                 {
                     Navigation = Navigation.Profile
                 });
@@ -52,10 +53,16 @@ namespace Pathfinder.Web.UI.Controllers
                         .GetPersonRepository()
                         .Get(model.PersonId);
 
-                    var bot = new BotManager().SaveBot(person.Id, model.UploadBot.BotAlias, model.UploadBot.BotDescription, file.InputStream);
-
-                    person.Bots.Add(bot);
-                    person.Save();
+                    byte[] botContent = new byte[file.InputStream.Length];
+                    file.InputStream.Read(botContent, 0, botContent.Length);
+                    var bot = new Domain.Entities.Bot(person)
+                                   {
+                                       Alias = model.UploadBot.BotAlias,
+                                       Description = model.UploadBot.BotDescription,
+                                       Filename = file.FileName,
+                                       Content = botContent
+                                   };
+                    bot.Save();
                 }
                 else
                 {

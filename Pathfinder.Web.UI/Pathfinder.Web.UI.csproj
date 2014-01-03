@@ -124,7 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
-    <Compile Include="Controllers\BotController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -133,7 +132,6 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TutorialController.cs" />
     <Compile Include="Data\AppDataFileStorage.cs" />
-    <Compile Include="Data\AppDataFilePersonRepository.cs" />
     <Compile Include="Data\PathMap.cs" />
     <Compile Include="Data\PersonStorage.cs" />
     <Compile Include="Global.asax.cs">

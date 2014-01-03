@@ -3,8 +3,36 @@
 namespace Pathfinder.Domain.Entities
 {
     [Serializable]
-    public abstract class DomainEntity : EntityBase<int>
+    public abstract class DomainEntity : EntityBase<int>, IEquatable<DomainEntity>
     {
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+        /// </returns>
+        /// <param name="other">An object to compare with this object.</param>
+        public bool Equals(DomainEntity other)
+        {
+            if (other != null)
+            {
+                return GetHashCode().Equals(other.GetHashCode());
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Serves as a hash function for a particular type. 
+        /// </summary>
+        /// <returns>
+        /// A hash code for the current <see cref="T:System.Object"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            return string.Concat(GetType(), Id).GetHashCode();
+        }
+
         /// <summary>
         /// Checks if persisted
         /// </summary>
@@ -13,5 +41,22 @@ namespace Pathfinder.Domain.Entities
         {
             return Id > 0;
         }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+        /// </summary>
+        /// <returns>
+        /// true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+        /// </returns>
+        /// <param name="obj">The object to compare with the current object. </param>
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as DomainEntity);
+        }
+
+        /// <summary>
+        /// Saves instance
+        /// </summary>
+        public abstract void Save();
     }
 }

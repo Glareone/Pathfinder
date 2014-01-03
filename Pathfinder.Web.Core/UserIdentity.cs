@@ -2,21 +2,21 @@
 
 namespace Pathfinder.Web.Core
 {
-    public class PersonIdentity : IIdentity
+    public class UserIdentity : IIdentity
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="PersonIdentity"/> class
+        /// Initializes a new instance of <see cref="UserIdentity"/> class
         /// </summary>
-        /// <param name="personId"></param>
-        public PersonIdentity(int personId)
+        /// <param name="userId"></param>
+        public UserIdentity(int userId)
         {
-            PersonId = personId;
+            UserId = userId;
         }
 
         /// <summary>
-        /// Gets person identifier
+        /// Gets user identifier
         /// </summary>
-        public int PersonId
+        public int UserId
         {
             get;
             private set;
@@ -32,7 +32,7 @@ namespace Pathfinder.Web.Core
         {
             get
             {
-                return string.Format("PersonId:{0}", PersonId);
+                return string.Format("userId:{0}", UserId);
             }
         }
 

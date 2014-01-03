@@ -3,14 +3,14 @@ using System.Security.Principal;
 
 namespace Pathfinder.Web.Core
 {
-    public class PersonPrincipal : IPrincipal
+    public class UserPrincipal : IPrincipal
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="PersonPrincipal"/> class
+        /// Initializes a new instance of <see cref="UserPrincipal"/> class
         /// </summary>
-        public PersonPrincipal(int personId)
+        public UserPrincipal(int userId)
         {
-            Identity = new PersonIdentity(personId);
+            Identity = new UserIdentity(userId);
         }
 
         /// <summary>

@@ -43,10 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BotManager.cs" />
     <Compile Include="LoginManager.cs" />
-    <Compile Include="PersonIdentity.cs" />
-    <Compile Include="PersonPrincipal.cs" />
+    <Compile Include="UserIdentity.cs" />
+    <Compile Include="USerPrincipal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

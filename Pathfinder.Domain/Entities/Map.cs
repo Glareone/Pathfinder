@@ -42,5 +42,13 @@ namespace Pathfinder.Domain.Entities
                 return Tiles.GetLength(1);
             }
         }
+
+        /// <summary>
+        /// Saves instance
+        /// </summary>
+        public override void Save()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

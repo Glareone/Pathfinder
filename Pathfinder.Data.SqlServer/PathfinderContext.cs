@@ -13,6 +13,8 @@ namespace Pathfinder.Data.SqlServer
         {
         }
 
+        public DbSet<User> Users { get; set; }
+
         public DbSet<Person> Persons { get; set; }
 
         public DbSet<Bot> Bots { get; set; }

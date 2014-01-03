@@ -6,18 +6,7 @@ namespace Pathfinder.Domain.Entities
     [Serializable]
     public class Person : DomainEntity
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="Person"/> class
-        /// </summary>
-        public Person()
-        {
-            Bots = new List<Bot>();
-        }
-
-        /// <summary>
-        /// Username of person
-        /// </summary>
-        public string Username { get; set; }
+        private List<Bot> _bots;
 
         /// <summary>
         /// First name
@@ -30,35 +19,33 @@ namespace Pathfinder.Domain.Entities
         public string LastName { get; set; }
 
         /// <summary>
-        /// Password hash
-        /// </summary>
-        public string Password { get; set; }
-
-        /// <summary>
         /// Gets display name
         /// </summary>
         public string DisplayName
         {
             get
             {
-                if (!string.IsNullOrEmpty(LastName) || !string.IsNullOrEmpty(FirstName))
-                {
-                    return string.Format("{0} {1}", FirstName, LastName);
-                }
-
-                return Username;
+                return string.Format("{0} {1}", FirstName, LastName);
             }
         }
 
         /// <summary>
         /// Bots collection
         /// </summary>
-        public virtual List<Bot> Bots { get; set; }
+        public List<Bot> Bots
+        {
+            get
+            {
+                return _bots ?? (_bots = DomainContext.Instance.RepositoryFactory
+                    .GetBotRepository()
+                    .GetBots(this));
+            }
+        }
 
         /// <summary>
         /// Saves instance
         /// </summary>
-        public void Save()
+        public override void Save()
         {
             DomainContext.Instance.RepositoryFactory
                 .GetPersonRepository()

@@ -29,18 +29,18 @@ namespace Pathfinder.Web.Core
         {
             error = null;
 
-            var person = DomainContext.Instance.RepositoryFactory.GetPersonRepository()
+            var user = DomainContext.Instance.RepositoryFactory.GetUserRepository()
                 .Find(username, password);
-            if (person == null)
+            if (user != null)
             {
-                error = "Invalid Username / Password.";
+                Authenticate(user);
 
-                return false;
+                return true;
             }
 
-            Authenticate(person);
+            error = "Invalid Username / Password.";
 
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -54,25 +54,32 @@ namespace Pathfinder.Web.Core
         {
             error = null;
 
-            var person = DomainContext.Instance.RepositoryFactory.GetPersonRepository()
+            var user = DomainContext.Instance.RepositoryFactory.GetUserRepository()
                 .Find(username, password);
-            if (person != null)
+            if (user == null)
             {
-                error = "This username already exists.";
+                var person = new Person
+                                 {
+                                     LastName = username
+                                 };
+                person.Save();
 
-                return false;
+                user = new User
+                    {
+                        Username = username,
+                        Password = password,
+                        PersonId = person.Id
+                    };
+                user.Save();
+
+                Authenticate(user);
+
+                return true;
             }
 
-            person = new Person
-                             {
-                                 Username = username,
-                                 Password = password
-                             };
-            person.Save();
+            error = "This username already exists.";
 
-            Authenticate(person);
-
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -93,12 +100,12 @@ namespace Pathfinder.Web.Core
         }
 
         /// <summary>
-        /// Gets current signed in person
+        /// Gets current signed in user
         /// </summary>
         /// <returns></returns>
-        public Person Current()
+        public User Current()
         {
-            var currentPrincipal = HttpContext.Current.User as PersonPrincipal;
+            var currentPrincipal = HttpContext.Current.User as UserPrincipal;
             if (currentPrincipal == null)
             {
                 var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
@@ -108,11 +115,11 @@ namespace Pathfinder.Web.Core
                     var ticket = FormsAuthentication.Decrypt(authCookie.Value);
                     if (ticket != null && !ticket.Expired)
                     {
-                        var person = DomainContext.Instance.RepositoryFactory.GetPersonRepository()
+                        var person = DomainContext.Instance.RepositoryFactory.GetUserRepository()
                             .Get(int.Parse(ticket.Name));
                         if (person != null)
                         {
-                            HttpContext.Current.User = currentPrincipal = new PersonPrincipal(person.Id);
+                            HttpContext.Current.User = currentPrincipal = new UserPrincipal(person.Id);
                         }
                     }
                 }
@@ -120,22 +127,22 @@ namespace Pathfinder.Web.Core
 
             if (currentPrincipal != null)
             {
-                return DomainContext.Instance.RepositoryFactory.GetPersonRepository()
-                    .Get(((PersonIdentity)currentPrincipal.Identity).PersonId);
+                return DomainContext.Instance.RepositoryFactory.GetUserRepository()
+                    .Get(((UserIdentity)currentPrincipal.Identity).UserId);
             }
 
             return null;
         }
 
         /// <summary>
-        /// Authenticate the person
+        /// Authenticate the user
         /// </summary>
-        /// <param name="person"></param>
-        private void Authenticate(Person person)
+        /// <param name="user"></param>
+        private void Authenticate(User user)
         {
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
                 1,
-                person.Id.ToString(),
+                user.Id.ToString(),
                 DateTime.Now,
                 DateTime.Now.AddDays(14),
                 true,

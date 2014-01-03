@@ -31,5 +31,13 @@
         /// Icon path
         /// </summary>
         public string IconPath { get; set; }
+
+        /// <summary>
+        /// Saves instance
+        /// </summary>
+        public override void Save()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

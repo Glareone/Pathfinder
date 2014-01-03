@@ -7,11 +7,6 @@ namespace Pathfinder.Data
     public abstract class RepositoryFactory : IRepositoryFactory
     {
         /// <summary>
-        /// Person repository instance
-        /// </summary>
-        public IPersonRepository PersonRepository { get; set; }
-
-        /// <summary>
         /// Gets content repository
         /// </summary>
         /// <returns></returns>
@@ -39,9 +34,21 @@ namespace Pathfinder.Data
         }
 
         /// <summary>
+        /// Gets user repository
+        /// </summary>
+        /// <returns></returns>
+        public abstract IUserRepository GetUserRepository();
+
+        /// <summary>
         /// Gets person repository
         /// </summary>
         /// <returns></returns>
         public abstract IPersonRepository GetPersonRepository();
+
+        /// <summary>
+        /// Gets bot repository
+        /// </summary>
+        /// <returns></returns>
+        public abstract IBotRepository GetBotRepository();
     }
 }

@@ -19,21 +19,21 @@ namespace Pathfinder.Web.UI.Models
         /// <summary>
         /// Initializes a new instance of <see cref="ProfileModel"/> class
         /// </summary>
-        public ProfileModel(Person person) : this()
+        public ProfileModel(User user) : this()
         {
-            PersonId = person.Id;
-            Username = person.Username;
-            FirstName = person.FirstName;
-            LastName = person.LastName;
+            PersonId = user.Person.Id;
+            Username = user.Username;
+            FirstName = user.Person.FirstName;
+            LastName = user.Person.LastName;
 
-            foreach (var bot in person.Bots)
+            foreach (var bot in user.Person.Bots)
             {
                 Bots.Add(new BotModel(bot));
             }
         }
 
         /// <summary>
-        /// Current person identifier
+        /// Current user identifier
         /// </summary>
         public int PersonId { get; set; }
 

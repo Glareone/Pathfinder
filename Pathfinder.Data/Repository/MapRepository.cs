@@ -14,12 +14,31 @@ namespace Pathfinder.Data.Repository
     public class MapRepository : RepositoryBase<Map>, IMapRepository
     {
         /// <summary>
+        /// Gets entity by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public override Map Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Get all
         /// </summary>
         /// <returns></returns>
         public override List<Map> GetAll()
         {
             throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Saves entity
+        /// </summary>
+        /// <param name="entity"></param>
+        public override void Save(Map entity)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
