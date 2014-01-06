@@ -1,18 +1,18 @@
 ﻿using System;
 
+using Pathfinder.Core.Tiles;
 using Pathfinder.Domain.Entities;
-using Pathfinder.Domain.Tiles;
 
 using TiledSharp;
 
-namespace Pathfinder.Data.Builders
+namespace Pathfinder.Engine.Builders
 {
-    public class MapBuilder
+    public class GameLevelBuilder
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="MapBuilder"/> class
+        /// Initializes a new instance of <see cref="GameLevelBuilder"/> class
         /// </summary>
-        public MapBuilder(TmxMap tmxMap)
+        public GameLevelBuilder(TmxMap tmxMap)
         {
             TmxMap = tmxMap;
         }
@@ -26,9 +26,9 @@ namespace Pathfinder.Data.Builders
         /// Builds map
         /// </summary>
         /// <returns></returns>
-        public Map Build()
+        public GameLevel Build()
         {
-            return new Map(LoadTiles());
+            return new GameLevel(LoadTiles());
         }
 
         /// <summary>

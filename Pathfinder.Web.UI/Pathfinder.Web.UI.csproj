@@ -129,22 +129,27 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FileStorageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TutorialController.cs" />
     <Compile Include="Data\AppDataFileStorage.cs" />
     <Compile Include="Data\PathMap.cs" />
     <Compile Include="Data\PersonStorage.cs" />
+    <Compile Include="Extensions\LoginManagerErrorExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BotModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MapModel.cs" />
+    <Compile Include="Models\MapsModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Navigation.cs" />
     <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\StarterPackageModel.cs" />
     <Compile Include="Models\StarterPackageType.cs" />
     <Compile Include="Models\UploadBotModel.cs" />
+    <Compile Include="Models\UploadMapModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\Alerts.cs" />
     <Compile Include="Support\Constants.cs" />
@@ -204,6 +209,7 @@
     <Content Include="Views\Bot\Index.cshtml" />
     <Content Include="Views\Shared\_Profile.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Map\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Maps\" />
@@ -226,6 +232,10 @@
     <Content Include="Views\Shared\_html5shiv.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pathfinder.Bot.Validation\Pathfinder.Bot.Validation.csproj">
+      <Project>{9b2344f8-5a24-43e0-b8b7-f64391d47de5}</Project>
+      <Name>Pathfinder.Bot.Validation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
       <Project>{3804c157-7f4c-42af-a2a4-5c3b4503c920}</Project>
       <Name>Pathfinder.Bot</Name>

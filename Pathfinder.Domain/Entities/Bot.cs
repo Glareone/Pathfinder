@@ -9,7 +9,7 @@ namespace Pathfinder.Domain.Entities
         /// <summary>
         /// Initializes a new instance of <see cref="Bot"/> class
         /// </summary>
-        protected Bot() {}
+        public Bot() {}
 
         /// <summary>
         /// Initializes a new instance of <see cref="Bot"/> class

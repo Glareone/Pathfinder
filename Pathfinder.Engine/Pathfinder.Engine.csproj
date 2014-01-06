@@ -36,16 +36,47 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TiledSharp">
+      <HintPath>..\packages\TiledSharp\lib\TiledSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine.cs" />
+    <Compile Include="Builders\GameLevelBuilder.cs" />
+    <Compile Include="GameEngineInvoker.cs" />
+    <Compile Include="GameEngineParameters.cs" />
+    <Compile Include="GameLevel.cs" />
+    <Compile Include="GamePlayer.cs" />
+    <Compile Include="GameState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
+      <Project>{3804c157-7f4c-42af-a2a4-5c3b4503c920}</Project>
+      <Name>Pathfinder.Bot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Core\Pathfinder.Core.csproj">
+      <Project>{53430992-6c99-44a6-9585-53cabcb87965}</Project>
+      <Name>Pathfinder.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Domain\Pathfinder.Domain.csproj">
+      <Project>{cc12d821-6169-4cea-a546-4efb12f6dd95}</Project>
+      <Name>Pathfinder.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="GameEngine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

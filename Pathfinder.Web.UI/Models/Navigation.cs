@@ -6,6 +6,8 @@
 
         Tutorial,
 
-        Profile
+        Profile,
+
+        Map
     }
 }

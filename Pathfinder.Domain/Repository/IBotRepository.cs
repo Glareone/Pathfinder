@@ -12,5 +12,17 @@ namespace Pathfinder.Domain.Repository
         /// <param name="person"></param>
         /// <returns></returns>
         List<Entities.Bot> GetBots(Person person);
+
+        /// <summary>
+        /// Deletes bot
+        /// </summary>
+        /// <param name="bot"></param>
+        void Delete(Entities.Bot bot);
+
+        /// <summary>
+        /// Deletes bot
+        /// </summary>
+        /// <param name="id"></param>
+        void Delete(int id);
     }
 }

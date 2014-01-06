@@ -14,9 +14,15 @@
         /// </summary>
         public BotModel(Domain.Entities.Bot bot)
         {
+            BotId = bot.Id;
             Alias = bot.Alias;
             Description = bot.Description;
         }
+
+        /// <summary>
+        /// Bot identifier
+        /// </summary>
+        public int BotId { get; set; }
 
         /// <summary>
         /// Alias

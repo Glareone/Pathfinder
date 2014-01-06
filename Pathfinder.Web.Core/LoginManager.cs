@@ -25,9 +25,9 @@ namespace Pathfinder.Web.Core
         /// <param name="error"></param>
         /// <param name="username"></param>
         /// <returns></returns>
-        public bool TryToSingIn(string username, string password, out string error)
+        public bool TryToSingIn(string username, string password, out LoginManagerError error)
         {
-            error = null;
+            error = LoginManagerError.None;
 
             var user = DomainContext.Instance.RepositoryFactory.GetUserRepository()
                 .Find(username, password);
@@ -38,7 +38,7 @@ namespace Pathfinder.Web.Core
                 return true;
             }
 
-            error = "Invalid Username / Password.";
+            error = LoginManagerError.InvalidUsernamePassword;
 
             return false;
         }
@@ -50,9 +50,9 @@ namespace Pathfinder.Web.Core
         /// <param name="error"></param>
         /// <param name="username"></param>
         /// <returns></returns>
-        public bool TryToSingUp(string username, string password, out string error)
+        public bool TryToSingUp(string username, string password, out LoginManagerError error)
         {
-            error = null;
+            error = LoginManagerError.None;
 
             var user = DomainContext.Instance.RepositoryFactory.GetUserRepository()
                 .Find(username, password);
@@ -70,6 +70,7 @@ namespace Pathfinder.Web.Core
                         Password = password,
                         PersonId = person.Id
                     };
+
                 user.Save();
 
                 Authenticate(user);
@@ -77,7 +78,7 @@ namespace Pathfinder.Web.Core
                 return true;
             }
 
-            error = "This username already exists.";
+            error = LoginManagerError.UsernameAlreadyExists;
 
             return false;
         }

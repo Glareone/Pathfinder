@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginManagerError.cs" />
     <Compile Include="LoginManager.cs" />
     <Compile Include="UserIdentity.cs" />
     <Compile Include="USerPrincipal.cs" />

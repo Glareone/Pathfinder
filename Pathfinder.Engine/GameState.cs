@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Pathfinder.Bot;
-using Pathfinder.Domain.Entities;
-using Pathfinder.Domain.Tiles;
 
-namespace Pathfinder.Core
+using Pathfinder.Bot;
+using Pathfinder.Core.Tiles;
+
+namespace Pathfinder.Engine
 {
     public class GameState : IGameState
     {
@@ -130,7 +130,7 @@ namespace Pathfinder.Core
         /// <summary>
         /// Gets your current location.
         /// </summary>
-        public Player Player
+        public Bot.Player Player
         {
             get;set;
         }
@@ -292,7 +292,7 @@ namespace Pathfinder.Core
         /// Sets player's location
         /// </summary>
         /// <param name="player"></param>
-        public GameState SetPlayerLocation(Player player)
+        public GameState SetPlayerLocation(Bot.Player player)
         {
             Player = player;
 
@@ -304,7 +304,7 @@ namespace Pathfinder.Core
         /// </summary>
         /// <param name="enemy"></param>
         /// <returns></returns>
-        public GameState AddEnemy(Player enemy)
+        public GameState AddEnemy(Bot.Player enemy)
         {
             Enemies.Add(enemy);
 

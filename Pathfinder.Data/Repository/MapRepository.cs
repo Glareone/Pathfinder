@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
-using Pathfinder.Data.Builders;
 using Pathfinder.Domain.Entities;
 using Pathfinder.Domain.Repository;
-
-using TiledSharp;
 
 namespace Pathfinder.Data.Repository
 {
@@ -62,8 +59,27 @@ namespace Pathfinder.Data.Repository
 
                 File.WriteAllBytes(dataFilePath, buffer);
 
-                return new MapBuilder(new TmxMap(dataFilePath)).Build();
+                //return new MapBuilder(new TmxMap(dataFilePath)).Build();
+                return null;
             }
+        }
+
+        /// <summary>
+        /// Deletes map
+        /// </summary>
+        /// <param name="map"></param>
+        public void Delete(Map map)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Deletes map
+        /// </summary>
+        /// <param name="id"></param>
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

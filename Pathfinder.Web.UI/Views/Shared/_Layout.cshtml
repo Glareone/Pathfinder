@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using Pathfinder.Domain.Entities
 @using Pathfinder.Web.Core
 @using Pathfinder.Web.UI.Models
 
@@ -37,12 +38,18 @@
                     @if (LoginManager.Instance.IsSingedIn())
                     {
                         <ul class="nav navbar-nav">
-                        <li class="@(Model.Navigation == Navigation.Profile ? "active" : string.Empty)"><a href="@Url.Action("Index", "Profile")"><span class="glyphicon glyphicon-wrench"></span> Profile</a></li>
-                    </ul>
+                            <li class="@(Model.Navigation == Navigation.Profile ? "active" : string.Empty)"><a href="@Url.Action("Index", "Profile")"><span class="glyphicon glyphicon-wrench"></span> Profile</a></li>
+                        </ul>
                     }
                     <ul class="nav navbar-nav navbar-right">
                         @Html.Partial("_Profile", new LoginModel())
                     </ul>
+                    @if (LoginManager.Instance.IsSingedIn()
+                        && LoginManager.Instance.Current().IsInRole(Role.Administrator)) {
+                        <ul class="nav navbar-nav">
+                            <li class="@(Model.Navigation == Navigation.Map ? "active" : string.Empty)"><a href="@Url.Action("Index", "Map")"><span class="glyphicon glyphicon-picture"></span> Maps</a></li>
+                        </ul>
+                    }
                 </div>
             </div>
         </div>

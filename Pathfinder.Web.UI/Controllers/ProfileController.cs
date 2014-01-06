@@ -1,7 +1,8 @@
-﻿using System.IO;
+﻿using System;
 using System.Web;
 using System.Web.Mvc;
 
+using Pathfinder.Bot.Validation;
 using Pathfinder.Domain;
 using Pathfinder.Web.Core;
 using Pathfinder.Web.UI.Models;
@@ -55,14 +56,28 @@ namespace Pathfinder.Web.UI.Controllers
 
                     byte[] botContent = new byte[file.InputStream.Length];
                     file.InputStream.Read(botContent, 0, botContent.Length);
-                    var bot = new Domain.Entities.Bot(person)
-                                   {
-                                       Alias = model.UploadBot.BotAlias,
-                                       Description = model.UploadBot.BotDescription,
-                                       Filename = file.FileName,
-                                       Content = botContent
-                                   };
-                    bot.Save();
+
+                    using (var botAssemblyValidator = new AssemblyValidator())
+                    {
+                        try
+                        {
+                            botAssemblyValidator.Validate(botContent);
+
+                            var bot = new Domain.Entities.Bot(person)
+                            {
+                                Alias = model.UploadBot.BotAlias,
+                                Description = model.UploadBot.BotDescription,
+                                Filename = file.FileName,
+                                Content = botContent
+                            };
+
+                            bot.Save();
+                        }
+                        catch (Exception ex)
+                        {
+                            Error(ex.Message);
+                        }
+                    }
                 }
                 else
                 {
@@ -73,6 +88,16 @@ namespace Pathfinder.Web.UI.Controllers
             {
                 Error("Bot alias is empty.");
             }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteBot(BotModel botModel)
+        {
+            DomainContext.Instance.RepositoryFactory
+                .GetBotRepository()
+                .Delete(botModel.BotId);
 
             return RedirectToAction("Index");
         }

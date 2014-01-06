@@ -49,14 +49,11 @@
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\Map.cs" />
     <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Repository\IBotRepository.cs" />
     <Compile Include="Repository\IPersonRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
-    <Compile Include="Tiles\ArtifactTile.cs" />
-    <Compile Include="Tiles\NavigationTile.cs" />
-    <Compile Include="Tiles\SpotType.cs" />
-    <Compile Include="Tiles\Tile.cs" />
     <Compile Include="IRepositoryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IArtifactRepository.cs" />

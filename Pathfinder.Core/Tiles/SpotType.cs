@@ -1,4 +1,4 @@
-﻿namespace Pathfinder.Domain.Tiles
+﻿namespace Pathfinder.Core.Tiles
 {
     public enum SpotType
     {

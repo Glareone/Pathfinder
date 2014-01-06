@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{668332C1-DC4E-4A12-A218-B6341A172F4A}</ProjectGuid>
+    <ProjectGuid>{9B2344F8-5A24-43E0-B8B7-F64391D47DE5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pathfinder.Data</RootNamespace>
-    <AssemblyName>Pathfinder.Data</AssemblyName>
+    <RootNamespace>Pathfinder.Bot.Validation</RootNamespace>
+    <AssemblyName>Pathfinder.Bot.Validation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,44 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataContext.cs" />
-    <Compile Include="IFileStorage.cs" />
-    <Compile Include="RepositoryFactory.cs" />
+    <Compile Include="AssemblyValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\ArtifactRepository.cs" />
-    <Compile Include="Repository\ContentRepository.cs" />
-    <Compile Include="Repository\MapRepository.cs" />
-    <Compile Include="Repository\RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
       <Project>{3804c157-7f4c-42af-a2a4-5c3b4503c920}</Project>
       <Name>Pathfinder.Bot</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pathfinder.Domain\Pathfinder.Domain.csproj">
-      <Project>{cc12d821-6169-4cea-a546-4efb12f6dd95}</Project>
-      <Name>Pathfinder.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\Artifacts\artifact_1.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_10.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_11.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_12.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_13.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_14.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_2.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_3.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_4.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_5.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_6.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_7.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_8.png" />
-    <EmbeddedResource Include="Icons\Artifacts\artifact_9.png" />
-    <EmbeddedResource Include="Maps\1\map.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Maps\1\data.tmx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

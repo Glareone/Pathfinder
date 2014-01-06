@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinder.Web.Core", "Path
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinder.Data.SqlServer", "Pathfinder.Data.SqlServer\Pathfinder.Data.SqlServer.csproj", "{09541B29-73CC-442F-842B-37246D42CD4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinder.Bot.Validation", "Pathfinder.Bot.Validation\Pathfinder.Bot.Validation.csproj", "{9B2344F8-5A24-43E0-B8B7-F64391D47DE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{09541B29-73CC-442F-842B-37246D42CD4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09541B29-73CC-442F-842B-37246D42CD4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09541B29-73CC-442F-842B-37246D42CD4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B2344F8-5A24-43E0-B8B7-F64391D47DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B2344F8-5A24-43E0-B8B7-F64391D47DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B2344F8-5A24-43E0-B8B7-F64391D47DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B2344F8-5A24-43E0-B8B7-F64391D47DE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

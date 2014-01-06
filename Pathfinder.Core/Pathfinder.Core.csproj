@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameEngineParameters.cs" />
-    <Compile Include="GamePlayer.cs" />
-    <Compile Include="GameState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tiles\ArtifactTile.cs" />
+    <Compile Include="Tiles\NavigationTile.cs" />
+    <Compile Include="Tiles\SpotType.cs" />
+    <Compile Include="Tiles\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
@@ -61,12 +62,6 @@
       <Project>{cc12d821-6169-4cea-a546-4efb12f6dd95}</Project>
       <Name>Pathfinder.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="GameEngine.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

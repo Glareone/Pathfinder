@@ -31,5 +31,14 @@ namespace Pathfinder.Data.SqlServer
         {
             return new BotRepository();
         }
+
+        /// <summary>
+        /// Gets Map repository
+        /// </summary>
+        /// <returns></returns>
+        public override IMapRepository GetMapRepository()
+        {
+            return new MapRepository();
+        }
     }
 }

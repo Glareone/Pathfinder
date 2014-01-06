@@ -14,7 +14,7 @@
                         <a href="#profile-personal-information"><span class="glyphicon glyphicon-user"></span> Personal information</a>
                     </li>
                     <li>
-                        <a href="#profile-bots"><span class="glyphicon glyphicon-play"></span> Bots</a>
+                        <a href="#profile-bots"><span class="glyphicon glyphicon-tower"></span> Bots</a>
                         <ul class="nav">
                             <li><a href="#profile-bots-upload">Upload bot</a></li>
                             <li><a href="#profile-bots-manage">Manage bots</a></li>
@@ -28,10 +28,10 @@
                 <div>
                     <div class="page-header">
                         <h2 id="profile-personal-information"><span class="glyphicon glyphicon-user"></span> Personal information</h2>
+                        <p>
+                            Edit your personal information.
+                        </p>
                     </div>
-                    <p>
-                        Edit your personal information.
-                    </p>
                     <div>
                         <form class="form-horizontal" role="form" method="post" action="@(Url.Action("EditPersonalInformation", "Profile"))">
                             @Html.HiddenFor(x => x.PersonId)
@@ -77,21 +77,21 @@
                                                                                   })
                                 </div>
                             </div>
-                          <button type="submit" class="btn btn-default">Submit</button>
+                          <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
                 <div>
                     <div class="page-header">
-                        <h2 id="profile-bots"><span class="glyphicon glyphicon-play"></span> Bots</h2>
+                        <h2 id="profile-bots"><span class="glyphicon glyphicon-tower"></span> Bots</h2>
+                        <p>
+                            Manage your bots. You can have multiple bots at the same time. Previous bots saved with <b>same alias</b> will be <b>replaced</b>.
+                        </p>
                     </div>
-                    <p>
-                        Manage your bots. You can have multiple bots at the same time. Previous bots saved with <b>same alias</b> will be <b>replaced</b>.
-                    </p>
                     <div>
                         <h4 id="profile-bots-upload">Upload bot</h4>
                         <p>
-                            Choose a *.dll file with contains @Html.ActionLink("IBot", "Index", "Tutorial", null, null, "starter-package-overview-interface-ibot", null, null) implementation.
+                            Choose a *.dll file with @Html.ActionLink("IBot", "Index", "Tutorial", null, null, "starter-package-overview-interface-ibot", null, null) implementation.
                         </p>
                         @using (Html.BeginForm("UploadBot", "Profile", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
                         {
@@ -125,7 +125,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-2"></div>
+                                @Html.Label("Bot", new
+                                                                    {
+                                                                        @class = "col-sm-2 control-label"
+                                                                    })
                                 <div class="col-sm-10">
                                     <div style="position:relative;">
                                         <a class='btn btn-primary' href='javascript:;'>
@@ -137,7 +140,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-default">Upload</button>
+                            <button type="submit" class="btn btn-primary">Upload</button>
                         }
                     </div>
                     <div>
@@ -152,6 +155,7 @@
                                     <th>#</th>
                                     <th>Alias</th>
                                     <th>Description</th>
+                                    <th/>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -162,6 +166,13 @@
                                             <td>@(index + 1)</td>
                                             <td>@bot.Alias</td>
                                             <td>@bot.Description</td>
+                                            <td>
+                                                @using (Html.BeginForm("DeleteBot", "Profile", FormMethod.Post))
+                                                {
+                                                    @Html.Hidden("BotId", bot.BotId)
+                                                    <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                                                }
+                                            </td>
                                         </tr>
                                     }
                                 </tbody>

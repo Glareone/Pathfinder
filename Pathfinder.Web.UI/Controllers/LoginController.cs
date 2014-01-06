@@ -2,6 +2,7 @@
 
 using Pathfinder.Security;
 using Pathfinder.Web.Core;
+using Pathfinder.Web.UI.Extensions;
 using Pathfinder.Web.UI.Models;
 
 namespace Pathfinder.Web.UI.Controllers
@@ -15,10 +16,10 @@ namespace Pathfinder.Web.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                string error;
+                LoginManagerError error;
                 if (!LoginManager.Instance.TryToSingIn(loginModel.Username, HashPassword(loginModel.Password), out error))
                 {
-                    Error(error);
+                    Error(error.DisplayName());
                 }
             }
             else
@@ -34,10 +35,10 @@ namespace Pathfinder.Web.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                string error;
+                LoginManagerError error;
                 if (!LoginManager.Instance.TryToSingUp(loginModel.Username, HashPassword(loginModel.Password), out error))
                 {
-                    Error(error);
+                    Error(error.DisplayName());
                 }
             }
             else

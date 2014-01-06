@@ -1,54 +1,47 @@
-﻿using Pathfinder.Domain.Tiles;
-
-namespace Pathfinder.Domain.Entities
+﻿namespace Pathfinder.Domain.Entities
 {
     public class Map : DomainEntity
     {
         /// <summary>
         /// Initializes a new instance of <see cref="Map"/> class
         /// </summary>
-        public Map(Tile[,] tiles)
+        public Map()
         {
-            Tiles = tiles;
         }
 
         /// <summary>
-        /// Tiles collection
+        /// Initializes a new instance of <see cref="Map"/> class
         /// </summary>
-        public Tile[,] Tiles
+        public Map(string name, byte[] image, byte[] content)
         {
-            get;
-            private set;
+            Name = name;
+            Image = image;
+            Content = content;
         }
 
         /// <summary>
-        /// Gets the width of the map.
+        /// Map's name
         /// </summary>
-        public int Width
-        {
-            get
-            {
-                return Tiles.GetLength(0);
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets the height of the map.
+        /// Image
         /// </summary>
-        public int Height
-        {
-            get
-            {
-                return Tiles.GetLength(1);
-            }
-        }
+        public byte[] Image { get; set; }
+
+        /// <summary>
+        /// Content
+        /// </summary>
+        public byte[] Content { get; set; }
 
         /// <summary>
         /// Saves instance
         /// </summary>
         public override void Save()
         {
-            throw new System.NotImplementedException();
+            DomainContext.Instance.RepositoryFactory
+                .GetMapRepository()
+                .Save(this);
         }
     }
 }

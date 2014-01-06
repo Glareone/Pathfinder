@@ -1,0 +1,122 @@
+﻿@model Pathfinder.Web.UI.Models.MapsModel
+
+@{
+    ViewBag.Title = "Pathfinder | Maps";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div role="complementary" class="bs-sidebar hidden-print affix">
+                <ul class="nav bs-sidenav">
+                    <li>
+                        <a href="#profile-bots"><span class="glyphicon glyphicon-picture"></span> Maps</a>
+                        <ul class="nav">
+                            <li><a href="#profile-bots-upload">Upload map</a></li>
+                            <li><a href="#profile-bots-manage">Manage maps</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="bs-docs-section">
+                <div>
+                    <div class="page-header">
+                        <h2 id="profile-bots"><span class="glyphicon glyphicon-picture"></span> Maps</h2>
+                        <p>
+                            Manage maps.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 id="profile-bots-upload">Upload map</h4>
+                        <p>
+                            Choose an image and a map in <b>tmx</b> format.
+                        </p>
+                        @using (Html.BeginForm("UploadMap", "Map", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.UploadMap.Name, "Name", new
+                                                                            {
+                                                                                @class = "col-sm-2 control-label"
+                                                                            })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.UploadMap.Name, new
+                                                                        {
+                                                                            @class = "form-control",
+                                                                            id = "Name",
+                                                                            placeholder = "Map name"
+                                                                        })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Image", new
+                                                        {
+                                                            @class = "col-sm-2 control-label"
+                                                        })
+                                <div class="col-sm-10">
+                                    <div style="position:relative;">
+                                        <a class='btn btn-primary' href='javascript:;'>
+                                            Choose a file...
+                                            <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="image" size="40"  onchange='$("#upload-file-image").html($(this).val());'>
+                                        </a>
+                                        &nbsp;
+                                        <span class='label label-info' id="upload-file-image"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Content", new
+                                                        {
+                                                            @class = "col-sm-2 control-label"
+                                                        })
+                                <div class="col-sm-10">
+                                    <div style="position:relative;">
+                                        <a class='btn btn-primary' href='javascript:;'>
+                                            Choose a file...
+                                            <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="content" size="40"  onchange='$("#upload-file-content").html($(this).val());'>
+                                        </a>
+                                        &nbsp;
+                                        <span class='label label-info' id="upload-file-content"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        }
+                    </div>
+                    <div>
+                        <h4 id="profile-bots-manage">Manage maps</h4>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th/>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int index = 0; index < Model.Maps.Count; index++)
+                                    {
+                                        var map = Model.Maps[index];
+                                        <tr>
+                                            <td>@(index + 1)</td>
+                                            <td>@map.Name</td>
+                                            <td>
+                                                @using (Html.BeginForm("DeleteMap", "Map", FormMethod.Post))
+                                                {
+                                                    @Html.Hidden("MapId", map.MapId)
+                                                    <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

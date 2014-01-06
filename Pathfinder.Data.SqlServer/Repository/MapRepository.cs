@@ -8,18 +8,18 @@ using Pathfinder.Domain.Repository;
 
 namespace Pathfinder.Data.SqlServer.Repository
 {
-    public class BotRepository : RepositoryBase<Bot>, IBotRepository
+    public class MapRepository : RepositoryBase<Map>, IMapRepository
     {
         /// <summary>
         /// Gets entity by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public override Bot Get(int id)
+        public override Map Get(int id)
         {
             using (var context = new PathfinderContext())
             {
-                return context.Bots.Find(id);
+                return context.Maps.Find(id);
             }
         }
 
@@ -27,58 +27,45 @@ namespace Pathfinder.Data.SqlServer.Repository
         /// Get all
         /// </summary>
         /// <returns></returns>
-        public override List<Bot> GetAll()
+        public override List<Map> GetAll()
         {
             using (var context = new PathfinderContext())
             {
-                return context.Bots.ToList();
+                return context.Maps.ToList();
             }
         }
 
         /// <summary>
         /// Saves entity
         /// </summary>
-        /// <param name="bot"></param>
-        public override void Save(Bot bot)
+        /// <param name="map"></param>
+        public override void Save(Map map)
         {
             using (var context = new PathfinderContext())
             {
-                context.Bots.AddOrUpdate(bot);
+                context.Maps.AddOrUpdate(map);
                 context.SaveChanges();
             }
         }
 
         /// <summary>
-        /// Gets collection of <see cref="Pathfinder.Domain.Entities.Bot"/>
+        /// Deletes map
         /// </summary>
-        /// <param name="person"></param>
-        /// <returns></returns>
-        public List<Bot> GetBots(Person person)
+        /// <param name="map"></param>
+        public void Delete(Map map)
         {
-            using (var context = new PathfinderContext())
-            {
-                return context.Bots.Where(x => x.PersonId == person.Id).ToList();
-            }
+            Delete(map.Id);
         }
 
         /// <summary>
-        /// Deletes bot
-        /// </summary>
-        /// <param name="bot"></param>
-        public void Delete(Bot bot)
-        {
-            Delete(bot.Id);
-        }
-
-        /// <summary>
-        /// Deletes bot
+        /// Deletes map
         /// </summary>
         /// <param name="id"></param>
         public void Delete(int id)
         {
             using (var context = new PathfinderContext())
             {
-                var c = new Bot { Id = id };
+                var c = new Map { Id = id };
                 context.Entry(c).State = EntityState.Deleted;
                 context.SaveChanges();
             }

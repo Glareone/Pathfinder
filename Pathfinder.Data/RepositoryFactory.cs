@@ -28,7 +28,7 @@ namespace Pathfinder.Data
         /// Gets Map repository
         /// </summary>
         /// <returns></returns>
-        public IMapRepository GetMapRepository()
+        public virtual IMapRepository GetMapRepository()
         {
             return new MapRepository();
         }

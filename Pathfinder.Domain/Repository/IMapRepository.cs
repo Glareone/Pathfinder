@@ -5,10 +5,15 @@ namespace Pathfinder.Domain.Repository
     public interface IMapRepository : IRepositoryBase<Map>
     {
         /// <summary>
-        /// Loads <see cref="Map"/> by index
+        /// Deletes map
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        Map Load(int index);
+        /// <param name="map"></param>
+        void Delete(Map map);
+
+        /// <summary>
+        /// Deletes map
+        /// </summary>
+        /// <param name="id"></param>
+        void Delete(int id);
     }
 }

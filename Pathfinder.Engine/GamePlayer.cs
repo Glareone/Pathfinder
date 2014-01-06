@@ -1,6 +1,6 @@
 ﻿using Pathfinder.Domain.Entities;
 
-namespace Pathfinder.Core
+namespace Pathfinder.Engine
 {
     public class GamePlayer
     {

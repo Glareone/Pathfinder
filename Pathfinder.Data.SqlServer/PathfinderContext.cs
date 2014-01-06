@@ -18,5 +18,7 @@ namespace Pathfinder.Data.SqlServer
         public DbSet<Person> Persons { get; set; }
 
         public DbSet<Bot> Bots { get; set; }
+
+        public DbSet<Map> Maps { get; set; }
     }
 }

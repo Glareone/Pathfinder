@@ -2,7 +2,7 @@
 
 using Pathfinder.Bot;
 
-namespace Pathfinder.Domain.Tiles
+namespace Pathfinder.Core.Tiles
 {
     public class Tile : Location, IEquatable<Tile>
     {
