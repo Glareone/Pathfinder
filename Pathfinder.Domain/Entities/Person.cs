@@ -51,5 +51,17 @@ namespace Pathfinder.Domain.Entities
                 .GetPersonRepository()
                 .Save(this);
         }
+
+        /// <summary>
+        /// Gets person by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static Person Get(int id)
+        {
+            return DomainContext.Instance.RepositoryFactory
+                    .GetPersonRepository()
+                    .Get(id);
+        }
     }
 }

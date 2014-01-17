@@ -97,7 +97,7 @@ namespace Pathfinder.Web.Core
         /// <returns></returns>
         public bool IsSingedIn()
         {
-            return Current() != null;
+            return CurrentUserId().HasValue;
         }
 
         /// <summary>
@@ -105,6 +105,22 @@ namespace Pathfinder.Web.Core
         /// </summary>
         /// <returns></returns>
         public User Current()
+        {
+            var currentUserId = CurrentUserId();
+            if (currentUserId.HasValue)
+            {
+                return DomainContext.Instance.RepositoryFactory.GetUserRepository()
+                    .Get(currentUserId.Value);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets current signed in user
+        /// </summary>
+        /// <returns></returns>
+        private int? CurrentUserId()
         {
             var currentPrincipal = HttpContext.Current.User as UserPrincipal;
             if (currentPrincipal == null)
@@ -128,8 +144,7 @@ namespace Pathfinder.Web.Core
 
             if (currentPrincipal != null)
             {
-                return DomainContext.Instance.RepositoryFactory.GetUserRepository()
-                    .Get(((UserIdentity)currentPrincipal.Identity).UserId);
+                return ((UserIdentity)currentPrincipal.Identity).UserId;
             }
 
             return null;

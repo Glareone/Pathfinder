@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 using Pathfinder.Bot.Validation;
 using Pathfinder.Domain;
+using Pathfinder.Domain.Entities;
 using Pathfinder.Web.Core;
 using Pathfinder.Web.UI.Models;
 
@@ -30,9 +31,7 @@ namespace Pathfinder.Web.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var person = DomainContext.Instance.RepositoryFactory
-                    .GetPersonRepository()
-                    .Get(model.PersonId);
+                var person = Person.Get(model.PersonId);
 
                 person.FirstName = model.FirstName;
                 person.LastName = model.LastName;
@@ -50,9 +49,7 @@ namespace Pathfinder.Web.UI.Controllers
             {
                 if (file != null)
                 {
-                    var person = DomainContext.Instance.RepositoryFactory
-                        .GetPersonRepository()
-                        .Get(model.PersonId);
+                    var person = Person.Get(model.PersonId);
 
                     byte[] botContent = new byte[file.InputStream.Length];
                     file.InputStream.Read(botContent, 0, botContent.Length);

@@ -7,7 +7,7 @@
         /// </summary>
         public User()
         {
-            Role = Role.None;
+            Role = Role.User;
         }
 
         /// <summary>

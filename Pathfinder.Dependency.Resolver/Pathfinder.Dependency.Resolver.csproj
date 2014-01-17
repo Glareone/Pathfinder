@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F485E19E-4E41-40E0-81A6-8E994ED8B152}</ProjectGuid>
+    <ProjectGuid>{9B7FB31F-7798-4D45-9EB6-25AE00ADAD15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pathfinder.Engine</RootNamespace>
-    <AssemblyName>Pathfinder.Engine</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Pathfinder.Dependency.Resolver</RootNamespace>
+    <AssemblyName>Pathfinder.Dependency.Resolver</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,64 +29,33 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.2\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.2.1\lib\net40\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Activities" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Activities" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TiledSharp">
-      <HintPath>..\packages\TiledSharp\lib\TiledSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\GameLevelBuilder.cs" />
-    <Compile Include="GameEngineInvoker.cs" />
-    <Compile Include="GameEngineInvokerParameters.cs" />
-    <Compile Include="GameEngineParameters.cs" />
-    <Compile Include="GameLevel.cs" />
-    <Compile Include="GamePlayer.cs" />
-    <Compile Include="GameState.cs" />
-    <Compile Include="Tracking\LogTrackingParticipant.cs" />
+    <Compile Include="CastleWindsorDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TracingLevel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
-      <Project>{3804c157-7f4c-42af-a2a4-5c3b4503c920}</Project>
-      <Name>Pathfinder.Bot</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pathfinder.Core\Pathfinder.Core.csproj">
-      <Project>{53430992-6c99-44a6-9585-53cabcb87965}</Project>
-      <Name>Pathfinder.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pathfinder.Dependency\Pathfinder.Dependency.csproj">
       <Project>{3c1bd4a6-432e-4371-b460-8658423c820e}</Project>
       <Name>Pathfinder.Dependency</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pathfinder.Domain\Pathfinder.Domain.csproj">
-      <Project>{cc12d821-6169-4cea-a546-4efb12f6dd95}</Project>
-      <Name>Pathfinder.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pathfinder.Log\Pathfinder.Log.csproj">
-      <Project>{f887f3e8-44d7-4972-8eb3-eefc39f885a8}</Project>
-      <Name>Pathfinder.Log</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <XamlAppDef Include="GameEngineWorkflow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
