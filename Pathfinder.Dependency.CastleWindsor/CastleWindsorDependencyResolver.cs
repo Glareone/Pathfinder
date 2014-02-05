@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 
-namespace Pathfinder.Dependency.Resolver
+namespace Pathfinder.Dependency.CastleWindsor
 {
     public class CastleWindsorDependencyResolver : IDependencyResolver
     {

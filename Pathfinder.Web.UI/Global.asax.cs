@@ -5,7 +5,7 @@ using System.Web.Routing;
 using Pathfinder.Data;
 using Pathfinder.Data.SqlServer;
 using Pathfinder.Dependency;
-using Pathfinder.Dependency.Resolver;
+using Pathfinder.Dependency.CastleWindsor;
 using Pathfinder.Domain;
 using Pathfinder.Log;
 using Pathfinder.Security;

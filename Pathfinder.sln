@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinder.Log", "Pathfinde
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinder.Dependency", "Pathfinder.Dependency\Pathfinder.Dependency.csproj", "{3C1BD4A6-432E-4371-B460-8658423C820E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinder.Dependency.Resolver", "Pathfinder.Dependency.Resolver\Pathfinder.Dependency.Resolver.csproj", "{9B7FB31F-7798-4D45-9EB6-25AE00ADAD15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinder.Dependency.CastleWindsor", "Pathfinder.Dependency.CastleWindsor\Pathfinder.Dependency.CastleWindsor.csproj", "{9B7FB31F-7798-4D45-9EB6-25AE00ADAD15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

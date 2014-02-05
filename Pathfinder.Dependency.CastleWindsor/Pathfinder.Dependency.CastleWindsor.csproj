@@ -7,8 +7,8 @@
     <ProjectGuid>{9B7FB31F-7798-4D45-9EB6-25AE00ADAD15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pathfinder.Dependency.Resolver</RootNamespace>
-    <AssemblyName>Pathfinder.Dependency.Resolver</AssemblyName>
+    <RootNamespace>Pathfinder.Dependency.CastleWindsor</RootNamespace>
+    <AssemblyName>Pathfinder.Dependency.CastleWindsor</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
