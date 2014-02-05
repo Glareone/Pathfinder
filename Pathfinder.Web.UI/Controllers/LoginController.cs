@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 
+using Pathfinder.Dependency;
 using Pathfinder.Security;
 using Pathfinder.Web.Core;
 using Pathfinder.Web.UI.Extensions;
@@ -9,8 +10,6 @@ namespace Pathfinder.Web.UI.Controllers
 {
     public class LoginController : ControllerBase
     {
-        public const string PASSWORD_SALT = "kldsai9n2o1emklcmalkmsd0a9DAS(*D)(SA^&*y832928109d8s9a08d9a8YSNDajjoidjsaoihh1h1232DUS)A(DJAasdoa";
-
         [HttpPost]
         public ActionResult SignIn(LoginModel loginModel)
         {
@@ -64,7 +63,7 @@ namespace Pathfinder.Web.UI.Controllers
         /// <returns></returns>
         protected string HashPassword(string password)
         {
-            return new HashComputer().ComputeHash(password, PASSWORD_SALT);
+            return DI.Resolve<IHashComputer>().ComputeHash(password);
         }
     }
 }

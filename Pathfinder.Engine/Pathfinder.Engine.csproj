@@ -52,9 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\GameLevelBuilder.cs" />
-    <Compile Include="GameEngineInvoker.cs" />
+    <Compile Include="GameEngine.cs" />
     <Compile Include="GameEngineInvokerParameters.cs" />
     <Compile Include="GameEngineParameters.cs" />
+    <Compile Include="GameEngineWorkflowInvoker.cs" />
     <Compile Include="GameLevel.cs" />
     <Compile Include="GamePlayer.cs" />
     <Compile Include="GameState.cs" />

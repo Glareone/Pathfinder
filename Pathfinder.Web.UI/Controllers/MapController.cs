@@ -3,6 +3,7 @@ using System.Web.Mvc;
 
 using Pathfinder.Domain;
 using Pathfinder.Domain.Entities;
+using Pathfinder.Engine;
 using Pathfinder.Web.UI.Models;
 
 namespace Pathfinder.Web.UI.Controllers
@@ -14,6 +15,7 @@ namespace Pathfinder.Web.UI.Controllers
 
         public ActionResult Index()
         {
+            new GameEngine().PlayGame(new GameEngineInvokerParameters(), new GameEngineParameters());
             var maps = DomainContext.Instance.RepositoryFactory
                 .GetMapRepository()
                 .GetAll();

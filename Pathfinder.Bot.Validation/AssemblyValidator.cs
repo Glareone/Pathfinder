@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Pathfinder.Bot.Validation
 {
-    public class AssemblyValidator : IDisposable
+    public sealed class AssemblyValidator : IDisposable
     {
         /// <summary>
         /// Validates assembly

@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Configuration;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Pathfinder.Data;
@@ -7,6 +8,7 @@ using Pathfinder.Dependency;
 using Pathfinder.Dependency.Resolver;
 using Pathfinder.Domain;
 using Pathfinder.Log;
+using Pathfinder.Security;
 using Pathfinder.Web.UI.Data;
 
 namespace Pathfinder.Web.UI
@@ -35,9 +37,15 @@ namespace Pathfinder.Web.UI
         /// </summary>
         protected void InjectDependencies()
         {
-            DI.Resolver = new CastleWindsorDependencyResolver();
+            var castleWindsorDependencyResolver = new CastleWindsorDependencyResolver();
 
-            DI.Resolver.Register<ILog, Log4net>();
+            castleWindsorDependencyResolver.Register<ILog, Log4net>();
+            castleWindsorDependencyResolver.Register<IHashComputer, HashComputer>(new
+                                                                  {
+                                                                      salt = ConfigurationManager.AppSettings["salt"]
+                                                                  });
+
+            DI.SetResolver(castleWindsorDependencyResolver);
         }
     }
 }

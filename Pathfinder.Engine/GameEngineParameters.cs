@@ -1,4 +1,6 @@
-﻿using Pathfinder.Domain.Entities;
+﻿using System;
+
+using Pathfinder.Domain.Entities;
 
 namespace Pathfinder.Engine
 {

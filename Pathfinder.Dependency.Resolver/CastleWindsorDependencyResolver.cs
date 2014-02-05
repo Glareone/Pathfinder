@@ -40,5 +40,21 @@ namespace Pathfinder.Dependency.Resolver
 
             return this;
         }
+
+        /// <summary>
+        /// Registers implementation
+        /// </summary>
+        /// <typeparam name="TDeclaration"></typeparam>
+        /// <typeparam name="TImpementation"></typeparam>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public IDependencyResolver Register<TDeclaration, TImpementation>(object parameters)
+        {
+            Container
+                .Register(Component.For(typeof(TDeclaration))
+                .ImplementedBy(typeof(TImpementation)).DependsOn(parameters));
+
+            return this;
+        }
     }
 }

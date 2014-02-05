@@ -4,36 +4,47 @@ using System.Text;
 
 namespace Pathfinder.Security
 {
-    public class HashComputer
+    public class HashComputer : IHashComputer
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="HashComputer"/> class
+        /// </summary>
+        public HashComputer(string salt)
+        {
+            Salt = salt;
+        }
+
+        /// <summary>
+        /// Salt
+        /// </summary>
+        protected string Salt { get; private set; }
+
         /// <summary>
         /// Computes hash
         /// </summary>
         /// <param name="input"></param>
-        /// <param name="salt"></param>
         /// <returns></returns>
-        public string ComputeHash(string input, string salt)
+        public string ComputeHash(string input)
         {
-            return ComputeHash(input, salt, new SHA1CryptoServiceProvider());
+            return ComputeHash(input, new SHA1CryptoServiceProvider());
         }
 
         /// <summary>
         /// Computes hash
         /// </summary>
         /// <param name="input"></param>
-        /// <param name="salt"></param>
         /// <param name="algorithm"></param>
         /// <returns></returns>
-        protected string ComputeHash(string input, string salt, HashAlgorithm algorithm)
+        protected string ComputeHash(string input, HashAlgorithm algorithm)
         {
             byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-            byte[] saltBytes = Encoding.UTF8.GetBytes(salt);
+            byte[] saltBytes = Encoding.UTF8.GetBytes(Salt);
 
             // Combine salt and input bytes
-            byte[] saltedInput = new byte[salt.Length + inputBytes.Length];
+            byte[] saltedInput = new byte[Salt.Length + inputBytes.Length];
 
             saltBytes.CopyTo(saltedInput, 0);
-            inputBytes.CopyTo(saltedInput, salt.Length);
+            inputBytes.CopyTo(saltedInput, Salt.Length);
 
             byte[] hashedBytes = algorithm.ComputeHash(saltedInput);
 

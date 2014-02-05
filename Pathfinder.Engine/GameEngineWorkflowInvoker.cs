@@ -9,16 +9,19 @@ using Pathfinder.Log;
 
 namespace Pathfinder.Engine
 {
-    public class GameEngineInvoker : MarshalByRefObject
+    public class GameEngineWorkflowInvoker : MarshalByRefObject
     {
         /// <summary>
-        /// Plays a game
+        /// Invokes workflow
         /// </summary>
-        public void PlayGame(GameEngineInvokerParameters gameEngineInvokerParameters, GameEngineParameters gameEngineParameters)
+        /// <param name="gameEngineInvokerParameters"></param>
+        /// <param name="gameEngineParameters"></param>
+        public void InvokeWorkflow(GameEngineInvokerParameters gameEngineInvokerParameters, GameEngineParameters gameEngineParameters)
         {
-            var workflowApplication = new WorkflowApplication(new GameEngineWorkflow(), CreateWorkflowArguments(gameEngineParameters));
-
-            workflowApplication.Extensions.Add(CreateTrackingParticipant(gameEngineInvokerParameters));
+            var workflowInvoker = new WorkflowInvoker(new GameEngineWorkflow());
+            workflowInvoker.Extensions.Add(CreateTrackingParticipant(gameEngineInvokerParameters));
+            //workflowInvoker.Invoke(CreateWorkflowArguments(gameEngineParameters));
+            DI.Resolve<ILog>().Debug("Bla");
         }
 
         /// <summary>
@@ -32,14 +35,14 @@ namespace Pathfinder.Engine
                         { "gameEngineParameters",  gameEngineParameters }
                     };
         }
-       
+
         /// <summary>
         /// Creates tracking participant
         /// </summary>
         /// <returns></returns>
         protected static TrackingParticipant CreateTrackingParticipant(GameEngineInvokerParameters gameEngineInvokerParameters)
         {
-            var logTrackingParticipant = new LogTrackingParticipant(DI.Resolver.Resolve<ILog>())
+            var logTrackingParticipant = new LogTrackingParticipant(DI.Resolve<ILog>())
             {
                 TrackingProfile = new TrackingProfile
                 {

@@ -1,4 +1,6 @@
-﻿namespace Pathfinder.Engine
+﻿using System;
+
+namespace Pathfinder.Engine
 {
     public class GameEngineInvokerParameters
     {
