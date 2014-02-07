@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
+using Pathfinder.Dependency;
 using Pathfinder.Domain;
 using Pathfinder.Domain.Entities;
 using Pathfinder.Engine;
@@ -16,7 +17,7 @@ namespace Pathfinder.Web.UI.Controllers
         public ActionResult Index()
         {
             new GameEngine().PlayGame(new GameEngineInvokerParameters(), new GameEngineParameters());
-            var maps = DomainContext.Instance.RepositoryFactory
+            var maps = DI.Resolve<IRepositoryFactory>()
                 .GetMapRepository()
                 .GetAll();
 
@@ -117,7 +118,7 @@ namespace Pathfinder.Web.UI.Controllers
         [HttpPost]
         public ActionResult DeleteMap(MapModel mapModel)
         {
-            DomainContext.Instance.RepositoryFactory
+            DI.Resolve<IRepositoryFactory>()
                 .GetMapRepository()
                 .Delete(mapModel.MapId);
 

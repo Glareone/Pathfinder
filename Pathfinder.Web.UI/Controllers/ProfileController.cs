@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using Pathfinder.Bot.Validation;
+using Pathfinder.Dependency;
 using Pathfinder.Domain;
 using Pathfinder.Domain.Entities;
 using Pathfinder.Web.Core;
@@ -92,7 +93,7 @@ namespace Pathfinder.Web.UI.Controllers
         [HttpPost]
         public ActionResult DeleteBot(BotModel botModel)
         {
-            DomainContext.Instance.RepositoryFactory
+            DI.Resolve<IRepositoryFactory>()
                 .GetBotRepository()
                 .Delete(botModel.BotId);
 

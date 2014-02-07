@@ -62,6 +62,10 @@
       <Project>{668332c1-dc4e-4a12-a218-b6341a172f4a}</Project>
       <Name>Pathfinder.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Dependency\Pathfinder.Dependency.csproj">
+      <Project>{3c1bd4a6-432e-4371-b460-8658423c820e}</Project>
+      <Name>Pathfinder.Dependency</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pathfinder.Domain\Pathfinder.Domain.csproj">
       <Project>{cc12d821-6169-4cea-a546-4efb12f6dd95}</Project>
       <Name>Pathfinder.Domain</Name>

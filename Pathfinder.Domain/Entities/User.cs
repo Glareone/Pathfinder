@@ -1,4 +1,6 @@
-﻿namespace Pathfinder.Domain.Entities
+﻿using Pathfinder.Dependency;
+
+namespace Pathfinder.Domain.Entities
 {
     public class User : DomainEntity
     {
@@ -47,7 +49,7 @@
         {
             get
             {
-                return DomainContext.Instance.RepositoryFactory
+                return DI.Resolve<IRepositoryFactory>()
                    .GetPersonRepository()
                    .Get(PersonId);
             }
@@ -58,7 +60,7 @@
         /// </summary>
         public override void Save()
         {
-            DomainContext.Instance.RepositoryFactory
+            DI.Resolve<IRepositoryFactory>()
                .GetUserRepository()
                .Save(this);
         }

@@ -1,4 +1,6 @@
-﻿namespace Pathfinder.Domain.Entities
+﻿using Pathfinder.Dependency;
+
+namespace Pathfinder.Domain.Entities
 {
     public class Map : DomainEntity
     {
@@ -39,7 +41,7 @@
         /// </summary>
         public override void Save()
         {
-            DomainContext.Instance.RepositoryFactory
+            DI.Resolve<IRepositoryFactory>()
                 .GetMapRepository()
                 .Save(this);
         }

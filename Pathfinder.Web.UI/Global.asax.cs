@@ -3,7 +3,6 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Pathfinder.Data;
-using Pathfinder.Data.SqlServer;
 using Pathfinder.Dependency;
 using Pathfinder.Dependency.CastleWindsor;
 using Pathfinder.Domain;
@@ -26,26 +25,9 @@ namespace Pathfinder.Web.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
 
-            DomainContext.Instance.RepositoryFactory = new SqlServerRepositoryFactory();
             DataContext.Instance.FileStorage = new AppDataFileStorage();
 
-            InjectDependencies();
-        }
-
-        /// <summary>
-        /// Injects dependencies
-        /// </summary>
-        protected void InjectDependencies()
-        {
-            var castleWindsorDependencyResolver = new CastleWindsorDependencyResolver();
-
-            castleWindsorDependencyResolver.Register<ILog, Log4net>();
-            castleWindsorDependencyResolver.Register<IHashComputer, HashComputer>(new
-                                                                  {
-                                                                      salt = ConfigurationManager.AppSettings["salt"]
-                                                                  });
-
-            DI.SetResolver(castleWindsorDependencyResolver);
+            DI.SetResolver(new CastleWindsorDependencyResolver());
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Security;
 
+using Pathfinder.Dependency;
 using Pathfinder.Domain;
 using Pathfinder.Domain.Entities;
 
@@ -29,7 +30,7 @@ namespace Pathfinder.Web.Core
         {
             error = LoginManagerError.None;
 
-            var user = DomainContext.Instance.RepositoryFactory.GetUserRepository()
+            var user = DI.Resolve<IRepositoryFactory>().GetUserRepository()
                 .Find(username, password);
             if (user != null)
             {
@@ -54,7 +55,7 @@ namespace Pathfinder.Web.Core
         {
             error = LoginManagerError.None;
 
-            var user = DomainContext.Instance.RepositoryFactory.GetUserRepository()
+            var user = DI.Resolve<IRepositoryFactory>().GetUserRepository()
                 .Find(username, password);
             if (user == null)
             {
@@ -109,7 +110,7 @@ namespace Pathfinder.Web.Core
             var currentUserId = CurrentUserId();
             if (currentUserId.HasValue)
             {
-                return DomainContext.Instance.RepositoryFactory.GetUserRepository()
+                return DI.Resolve<IRepositoryFactory>().GetUserRepository()
                     .Get(currentUserId.Value);
             }
 
@@ -132,7 +133,7 @@ namespace Pathfinder.Web.Core
                     var ticket = FormsAuthentication.Decrypt(authCookie.Value);
                     if (ticket != null && !ticket.Expired)
                     {
-                        var person = DomainContext.Instance.RepositoryFactory.GetUserRepository()
+                        var person = DI.Resolve<IRepositoryFactory>().GetUserRepository()
                             .Get(int.Parse(ticket.Name));
                         if (person != null)
                         {

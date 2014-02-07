@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Pathfinder.Bot;
+using Pathfinder.Dependency;
 
 namespace Pathfinder.Domain.Entities
 {
@@ -58,7 +59,7 @@ namespace Pathfinder.Domain.Entities
         /// </summary>
         public override void Save()
         {
-            DomainContext.Instance.RepositoryFactory
+            DI.Resolve<IRepositoryFactory>()
                 .GetBotRepository()
                 .Save(this);
         }

@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Artifact.cs" />
-    <Compile Include="DomainContext.cs" />
     <Compile Include="Entities\Bot.cs" />
     <Compile Include="Entities\DomainEntity.cs" />
     <Compile Include="Entities\EntityBase.cs" />
@@ -65,6 +64,10 @@
     <ProjectReference Include="..\Pathfinder.Bot\Pathfinder.Bot.csproj">
       <Project>{3804c157-7f4c-42af-a2a4-5c3b4503c920}</Project>
       <Name>Pathfinder.Bot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pathfinder.Dependency\Pathfinder.Dependency.csproj">
+      <Project>{3c1bd4a6-432e-4371-b460-8658423c820e}</Project>
+      <Name>Pathfinder.Dependency</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

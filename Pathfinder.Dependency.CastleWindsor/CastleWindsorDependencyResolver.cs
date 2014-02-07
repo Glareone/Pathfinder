@@ -1,5 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Castle.Windsor.Installer;
 
 namespace Pathfinder.Dependency.CastleWindsor
 {
@@ -10,7 +11,7 @@ namespace Pathfinder.Dependency.CastleWindsor
         /// </summary>
         public CastleWindsorDependencyResolver()
         {
-            Container = new WindsorContainer();
+            Container = new WindsorContainer().Install(Configuration.FromAppConfig());
         }
 
         /// <summary>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Pathfinder.Dependency;
+
 namespace Pathfinder.Domain.Entities
 {
     [Serializable]
@@ -36,7 +38,7 @@ namespace Pathfinder.Domain.Entities
         {
             get
             {
-                return _bots ?? (_bots = DomainContext.Instance.RepositoryFactory
+                return _bots ?? (_bots = DI.Resolve<IRepositoryFactory>()
                     .GetBotRepository()
                     .GetBots(this));
             }
@@ -47,7 +49,7 @@ namespace Pathfinder.Domain.Entities
         /// </summary>
         public override void Save()
         {
-            DomainContext.Instance.RepositoryFactory
+            DI.Resolve<IRepositoryFactory>()
                 .GetPersonRepository()
                 .Save(this);
         }
@@ -59,7 +61,7 @@ namespace Pathfinder.Domain.Entities
         /// <returns></returns>
         public static Person Get(int id)
         {
-            return DomainContext.Instance.RepositoryFactory
+            return DI.Resolve<IRepositoryFactory>()
                     .GetPersonRepository()
                     .Get(id);
         }
